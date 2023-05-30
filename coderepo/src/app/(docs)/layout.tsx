@@ -1,28 +1,30 @@
 import Link from "next/link";
 
-import { indexConfig } from "@/config/indexConfig";
+import { docsConfig } from "@/config/docs";
+import { siteConfig } from "@/config/site";
+import { Icons } from "@/components/icons";
+import { MainNav } from "@/components/main-nav";
+import { DocsSearch } from "@/components/search";
+import { DocsSidebarNav } from "@/components/sidebar-nav";
+import { SiteFooter } from "@/components/site-footer";
+import { CommandMenu } from "@/components/command-menu";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
-import { MainNav } from "@/components/main-nav";
-import { SiteFooter } from "@/components/site-footer";
-import { DocsSearch } from "@/components/search";
-import { Icons } from "@/components/icons";
-import { CommandMenu } from "@/components/command-menu";
-import { siteConfig } from "@/config/site";
 import { ModeToggle } from "@/components/mode-toggle";
+import { indexConfig } from "@/config/indexConfig";
 
-interface MarketingLayoutProps {
+interface DocsLayoutProps {
   children: React.ReactNode;
 }
 
-export default async function MarketingLayout({
-  children,
-}: MarketingLayoutProps) {
+export default function DocsLayout({ children }: DocsLayoutProps) {
   return (
     <div className="flex min-h-screen flex-col">
       <header className="sticky top-0 z-40 w-full border-b bg-background">
         <div className="container flex h-20 items-center justify-between py-6">
-          <MainNav items={indexConfig.mainNav} />
+          <MainNav items={indexConfig.mainNav}>
+            <DocsSidebarNav items={docsConfig.sidebarNav} />
+          </MainNav>
           <div className="flex flex-1 items-center justify-between space-x-2 sm:space-x-4 md:justify-end">
             <div className="w-full flex-1 md:w-auto md:flex-none">
               <CommandMenu />
@@ -51,7 +53,7 @@ export default async function MarketingLayout({
           </div>
         </div>
       </header>
-      <main className="flex-1">{children}</main>
+      <main className="container flex-1">{children}</main>
       <SiteFooter items={indexConfig.mainNav} />
     </div>
   );
