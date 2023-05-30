@@ -19,7 +19,7 @@ interface DocPageProps {
   };
 }
 
-async function getDocFromParams(params: any) {
+async function getDocFromParams(params: { slug: string[] }) {
   const slug = params.slug?.join("/") || "";
   const doc = allDocs.find((doc) => doc.slugAsParams === slug);
 
