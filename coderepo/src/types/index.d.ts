@@ -16,6 +16,7 @@ export type MainNavItem = {
   href: string;
   disabled?: boolean;
   links?: (NavItem & { description: string })[];
+  external?: boolean;
 };
 
 export type IndexConfig = {
