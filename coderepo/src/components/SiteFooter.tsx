@@ -19,7 +19,7 @@ const SiteFooter = ({ className }: React.HTMLAttributes<HTMLElement>) => {
               className="font-medium underline underline-offset-4"
             >
               Karlo Jurković
-            </a>
+            </a>{" "}
             &
             <a
               href={siteConfig.links.antonioPage}
@@ -27,6 +27,7 @@ const SiteFooter = ({ className }: React.HTMLAttributes<HTMLElement>) => {
               rel="noreferrer"
               className="font-medium underline underline-offset-4"
             >
+              {" "}
               Antonio Obradović
             </a>
             . Hosted on{" "}
@@ -38,7 +39,7 @@ const SiteFooter = ({ className }: React.HTMLAttributes<HTMLElement>) => {
             >
               Vercel
             </a>
-            . The source code and exapmles are available on{" "}
+            . The source code and examples are available on{" "}
             <a
               href={siteConfig.links.github}
               target="_blank"

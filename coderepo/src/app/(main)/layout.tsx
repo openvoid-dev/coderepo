@@ -10,10 +10,8 @@ interface MainLayoutProps {
 export default async function MainLayout({ children }: MainLayoutProps) {
   return (
     <div className="flex min-h-screen flex-col">
-      <header className="container z-40 bg-background">
-        <div className="flex h-20 items-center justify-between py-6">
-          <MainNav items={mainConfig.mainNav} />
-        </div>
+      <header className="z-40 bg-background border-b sticky top-0">
+        <MainNav items={mainConfig.mainNav} />
       </header>
       <main className="flex-1">{children}</main>
       <SiteFooter />

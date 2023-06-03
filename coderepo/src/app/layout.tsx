@@ -1,17 +1,24 @@
-import { Inter as FontSans } from "next/font/google";
+import { Inter as FontSans, Open_Sans } from "next/font/google";
 import localFont from "next/font/local";
 
 import "@/styles/globals.css";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { Analytics } from "@/components/Analytics";
 
 import { siteConfig } from "@/config/site";
 
 // * Fonts
 const fontSans = FontSans({
+  weight: ["400", "500", "700"],
   subsets: ["latin"],
   variable: "--font-sans",
 });
+// const fontSans = Open_Sans({
+//   weight: ["400", "500", "700"],
+//   subsets: ["latin"],
+//   variable: "--font-sans",
+// });
 const fontHeading = localFont({
   src: "../assets/fonts/CalSans-SemiBold.woff2",
   variable: "--font-heading",
@@ -61,7 +68,7 @@ export const metadata = {
     card: "summary_large_image",
     title: siteConfig.name,
     description: siteConfig.description,
-    images: [`${siteConfig.url}/og.jpg`],
+    images: [`${siteConfig.url}/og.png`],
     creator: "@antonioobra8",
   },
   icons: {
@@ -77,20 +84,20 @@ interface RootLayoutProps {
 }
 
 export default function RootLayout({ children }: RootLayoutProps) {
-  console.log(fontSans);
-
   return (
     <html lang="en" suppressHydrationWarning>
+      <head />
       <body
-        className={
-          (cn("min-h-screen bg-background font-sans antialiased"),
+        className={cn(
+          "min-h-screen bg-background font-sans antialiased",
           fontSans.variable,
-          fontHeading.variable)
-        }
+          fontHeading.variable
+        )}
       >
         {/* // * ThemeProvider used for no flashing white screen on dark mode */}
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {children}
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>
