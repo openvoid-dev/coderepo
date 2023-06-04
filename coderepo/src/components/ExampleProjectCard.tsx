@@ -1,3 +1,5 @@
+"use client";
+
 import { ChevronDown, Circle, Plus, Star } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -8,16 +10,25 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { ExampleProjectItem } from "@/types";
+import { ExampleProject, ExampleProjectItem } from "@/types";
 import Link from "next/link";
 import { Icons } from "./Icons";
+
+interface ExampleProjectCardProps {
+  title: ExampleProjectItem["title"];
+  href: ExampleProjectItem["href"];
+  github: ExampleProjectItem["github"];
+  description: ExampleProjectItem["description"];
+  filters?: ExampleProject["filters"];
+}
 
 export function ExampleProjectCard({
   title,
   href,
   github,
   description,
-}: ExampleProjectItem) {
+  filters,
+}: ExampleProjectCardProps) {
   return (
     <Card className="flex flex-col">
       <CardHeader className="grid grid-cols-[1fr_110px] items-start gap-4 space-y-0">

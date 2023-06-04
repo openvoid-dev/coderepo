@@ -60,3 +60,23 @@ export type SidebarNavItem = {
       items: NavLink[];
     }
 );
+
+export type ExampleFilter = {
+  title: string;
+  icon: Icon;
+};
+
+export type ExampleProject = {
+  title: string;
+  description: string;
+  href: string;
+  github: string;
+  filters: { title: string }[];
+};
+
+export type ExamplesConfig = {
+  heading: string;
+  subheading: string;
+  filters: ExampleFilter[];
+  projects: ExampleProject[];
+};
