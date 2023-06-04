@@ -62,7 +62,7 @@ export type SidebarNavItem = {
 );
 
 export type ExampleFilter = {
-  title: string;
+  title: "All" | "React" | "React Three Fiber" | "GSAP" | "Typescript";
   icon: Icon;
 };
 

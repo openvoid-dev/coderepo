@@ -12,7 +12,7 @@ export default function IndexPage() {
       {/* Hero */}
       <section className="space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:py-32">
         <div className="container flex max-w-[74rem] flex-col items-center gap-4 text-center">
-          <h1 className="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl dark:text-emerald-100">
+          <h1 className="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl dark:text-sky-100">
             Code Repo: Exploring Web Technologies and Documentation
           </h1>
           <p className="max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8">
@@ -39,9 +39,9 @@ export default function IndexPage() {
       </section>
 
       {/* Example Projects */}
-      <section className="container space-y-6 bg-emerald-50 py-8 dark:bg-neutral-950/50 md:py-12 lg:py-24">
+      <section className="container space-y-6 bg-sky-100 py-8 dark:bg-neutral-950/50 md:py-12 lg:py-24">
         <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
-          <h1 className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl dark:text-emerald-100">
+          <h1 className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl dark:text-sky-100">
             Inspiring Example Projects
           </h1>
           <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
@@ -72,7 +72,7 @@ export default function IndexPage() {
       {/* Technologies */}
       <section className="container space-y-6  py-8 dark:bg-transparent md:py-12 lg:py-24">
         <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
-          <h1 className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl dark:text-emerald-100">
+          <h1 className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl dark:text-sky-100">
             Cutting-Edge Technologies Empowering Digital Innovation
           </h1>
           <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
@@ -100,9 +100,9 @@ export default function IndexPage() {
       </section>
 
       {/* Open Source */}
-      <section className="container py-8 md:py-12 lg:py-24 bg-emerald-50 dark:bg-neutral-950/50">
+      <section className="container py-8 md:py-12 lg:py-24 bg-sky-100 dark:bg-neutral-950/50">
         <div className="mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center">
-          <h1 className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl dark:text-emerald-100">
+          <h1 className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl dark:text-sky-100">
             Driving Innovation Through Open Source
           </h1>
           <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
