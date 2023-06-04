@@ -17,7 +17,7 @@ const TechnologyCard = ({
         <Icon className="h-12 w-12 fill-current" />
         <div className="space-y-2">
           <h2 className="font-bold">{title}</h2>
-          <p className="text-sm text-muted-foreground">{description}</p>
+          <p className="text-sm text-muted-foreground">{description}</p>I
         </div>
       </div>
     </div>

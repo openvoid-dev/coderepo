@@ -24,26 +24,26 @@ export const mainConfig: MainConfig = {
     {
       title: "skeleton",
       href: "/examples/skeleton",
-      github: "",
+      github: "#",
       description: "The React Framework for Production",
     },
     {
       title: "gsap",
       href: "/examples/gsap",
-      github: "",
+      github: "#",
       description:
         "Rapidly build modern websites without ever leaving your HTML.",
     },
     {
       title: "chat-app",
       href: "/examples/chat-app",
-      github: "",
+      github: "#",
       description: "TypeScript extends JavaScript by adding types.",
     },
     {
       title: "gsap",
       href: "/examples/gsap",
-      github: "",
+      github: "#",
       description:
         "Gsap is a JavaScript library for building high-performance animations that work in every major browser.",
     },
