@@ -80,3 +80,27 @@ export type ExamplesConfig = {
   filters: ExampleFilter[];
   projects: ExampleProject[];
 };
+
+// * Resources
+export type ResourcesFilter = {
+  title:
+    | "All"
+    | "Courses"
+    | "Web Development"
+    | "Design"
+    | "3D Design"
+    | "Useful Blogs"
+    | "Job Marketplace";
+  icon: Icon;
+};
+export type Resource = {
+  title: string;
+  description: string;
+  href: string;
+  filters: { title: ResourcesFilter["title"] }[];
+};
+
+export type ResourcesConfig = {
+  filters: ResourcesFilter[];
+  resources: Resource[];
+};

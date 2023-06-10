@@ -34,7 +34,7 @@ export function ExampleProjectCard({
       <CardHeader className="grid grid-cols-[1fr_110px] items-start gap-4 space-y-0">
         <div className="space-y-3">
           <a href={github} target="_blank" className="w-fit block">
-            <CardTitle className="underline underline-offset-2 hover:decoration-emerald-300 decoration-2 w-fit">
+            <CardTitle className="underline underline-offset-2 hover:decoration-sky-300 decoration-2 w-fit">
               coderepo/{title}
             </CardTitle>
           </a>

@@ -16,12 +16,12 @@ export default function GuidesPage() {
   return (
     <div className="py-6 lg:py-10">
       <DocsPageHeader
-        heading="Guides"
-        text="This section includes end-to-end guides for developing Next.js 13 apps."
+        heading="Comprehensive Guides for Web Development Technologies"
+        text="Empowering Aspiring Web Developers with In-Depth and Accessible Guides to Master the Cutting-Edge Technologies that Drive the Web, from HTML and CSS to JavaScript Frameworks and Beyond"
       />
 
       {guides?.length ? (
-        <div className="grid gap-4 md:grid-cols-2 md:gap-6">
+        <div className="grid gap-4 md:grid-cols-3 md:gap-6">
           {guides.map((guide) => (
             <article
               key={guide._id}
