@@ -28,7 +28,7 @@ const ExamplesContent = () => {
 
   return (
     <>
-      <div className="flex items-center gap-4 overflow-x-scroll md:overflow-auto">
+      <div className="flex items-center gap-4 overflow-x-scroll custom-x-scrollbar">
         {examplesConfig.filters.map(({ icon: Icon, ...filter }) => (
           <Button
             variant="outline"

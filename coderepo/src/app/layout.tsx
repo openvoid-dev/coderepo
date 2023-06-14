@@ -1,4 +1,4 @@
-import { Inter as FontSans, Open_Sans } from "next/font/google";
+import { Inter as FontSans } from "next/font/google";
 import localFont from "next/font/local";
 
 import "@/styles/globals.css";
@@ -14,11 +14,7 @@ const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
 });
-// const fontSans = Open_Sans({
-//   weight: ["400", "500", "700"],
-//   subsets: ["latin"],
-//   variable: "--font-sans",
-// });
+
 const fontHeading = localFont({
   src: "../assets/fonts/CalSans-SemiBold.woff2",
   variable: "--font-heading",
@@ -85,8 +81,8 @@ interface RootLayoutProps {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head />
+    <html lang="en">
+      <head suppressHydrationWarning />
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased",

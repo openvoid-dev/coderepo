@@ -30,9 +30,10 @@ const ResourcesContent = () => {
 
   return (
     <>
-      <div className="flex items-center gap-4 overflow-x-scroll md:overflow-auto">
+      <div className="flex items-center gap-4 overflow-x-scroll custom-x-scrollbar">
         {resourceConfig.filters.map(({ icon: Icon, ...filter }) => (
           <Button
+            key={filter.title}
             variant="outline"
             onClick={() => handleFilterChange({ title: filter.title })}
             className={`  ${activeFilter === filter.title ? "bg-accent" : ""}`}
