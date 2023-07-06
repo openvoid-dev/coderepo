@@ -212,5 +212,11 @@ export const resourceConfig: ResourcesConfig = {
       description: "Open Doors - Find your dream job",
       filters: [{ title: "Job Marketplace" }],
     },
+    {
+      title: "Free Faces",
+      href: "https://www.freefaces.gallery/",
+      description: "Curated collection of typefaces that are available under a variety of free licences somewhere on the interwebs.",
+      filters: [{ title: "Design" }],
+    },
   ],
 };
