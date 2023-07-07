@@ -213,6 +213,12 @@ export const resourceConfig: ResourcesConfig = {
       filters: [{ title: "Job Marketplace" }],
     },
     {
+      title: "ITJobsCroatia",
+      href: "https://itjobscroatia.com/",
+      description: "Central place for posting and searching for jobs in the IT field in Croatia.",
+      filters: [{ title: "Job Marketplace" }],
+    },
+    {
       title: "Free Faces",
       href: "https://www.freefaces.gallery/",
       description: "Curated collection of typefaces that are available under a variety of free licences somewhere on the interwebs.",
