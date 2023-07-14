@@ -9,27 +9,31 @@ export const resourceConfig: ResourcesConfig = {
     },
     {
       title: "Courses",
-      icon: Icons.react,
+      icon: Icons.course,
     },
     {
       title: "Web Development",
-      icon: Icons.react,
+      icon: Icons.dev,
     },
     {
       title: "Design",
-      icon: Icons.react,
+      icon: Icons.design,
     },
     {
       title: "3D Design",
-      icon: Icons.nextjs,
+      icon: Icons.threeDDesign,
     },
     {
       title: "Useful Blogs",
-      icon: Icons.nextjs,
+      icon: Icons.blog,
+    },
+    {
+      title: "Icons",
+      icon: Icons.icons,
     },
     {
       title: "Job Marketplace",
-      icon: Icons.nextjs,
+      icon: Icons.community,
     },
   ],
   resources: [
@@ -133,12 +137,6 @@ export const resourceConfig: ResourcesConfig = {
       filters: [{ title: "3D Design" }, { title: "Courses" }],
     },
     {
-      title: "React Icons",
-      href: "https://react-icons.github.io/react-icons",
-      description: "Include popular icons in your React projects easily",
-      filters: [{ title: "Web Development" }, { title: "Design" }],
-    },
-    {
       title: "Awwwards",
       href: "https://www.awwwards.com/",
       description: "Website Awards - Best Web Design Trends",
@@ -215,14 +213,40 @@ export const resourceConfig: ResourcesConfig = {
     {
       title: "ITJobsCroatia",
       href: "https://itjobscroatia.com/",
-      description: "Central place for posting and searching for jobs in the IT field in Croatia.",
+      description:
+        "Central place for posting and searching for jobs in the IT field in Croatia.",
       filters: [{ title: "Job Marketplace" }],
     },
     {
       title: "Free Faces",
       href: "https://www.freefaces.gallery/",
-      description: "Curated collection of typefaces that are available under a variety of free licences somewhere on the interwebs.",
+      description:
+        "Curated collection of typefaces that are available under a variety of free licences somewhere on the interwebs.",
       filters: [{ title: "Design" }],
+    },
+    {
+      title: "Icons8",
+      href: "https://icons8.com/",
+      description: "Icons, illustrations, photos, music, and design tools",
+      filters: [{ title: "Icons" }],
+    },
+    {
+      title: "Lucide",
+      href: "https://lucide.dev/",
+      description: "Beautiful & consistent icons",
+      filters: [{ title: "Icons" }],
+    },
+    {
+      title: "Tabler Icons",
+      href: "https://tabler-icons.io/",
+      description: "Over 4300 pixel-perfect icons for web design",
+      filters: [{ title: "Icons" }],
+    },
+    {
+      title: "React Icons",
+      href: "https://react-icons.github.io/react-icons/",
+      description: "Popular icons in your React projects",
+      filters: [{ title: "Icons" }],
     },
   ],
 };

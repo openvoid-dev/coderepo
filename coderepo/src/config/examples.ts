@@ -16,15 +16,15 @@ export const examplesConfig: ExamplesConfig = {
     },
     {
       title: "React Three Fiber",
-      icon: Icons.react,
-    },
-    {
-      title: "GSAP",
-      icon: Icons.react,
+      icon: Icons.threeDDesign,
     },
     {
       title: "Typescript",
-      icon: Icons.nextjs,
+      icon: Icons.typescript,
+    },
+    {
+      title: "Animations",
+      icon: Icons.animation,
     },
   ],
   projects: [
@@ -47,7 +47,7 @@ export const examplesConfig: ExamplesConfig = {
       href: "/examples/skeleton",
       github: "#",
       description: "The React Framework for Production",
-      filters: [{ title: "React" }, { title: "Typescript" }],
+      filters: [{ title: "Animations" }],
     },
     {
       title: "skeleton",
@@ -55,13 +55,6 @@ export const examplesConfig: ExamplesConfig = {
       github: "#",
       description: "The React Framework for Production",
       filters: [{ title: "React" }, { title: "Typescript" }],
-    },
-    {
-      title: "skeleton",
-      href: "/examples/skeleton",
-      github: "#",
-      description: "The React Framework for Production",
-      filters: [{ title: "Typescript" }, { title: "GSAP" }],
     },
   ],
 };

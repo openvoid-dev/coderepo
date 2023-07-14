@@ -57,7 +57,7 @@ const ResourcesContent = () => {
         </div>
       ) : (
         <div>
-          <h2 className="text-2xl font-bold mt-6">No projects found</h2>
+          <h2 className="text-2xl font-bold mt-6">No resources found</h2>
         </div>
       )}
     </>

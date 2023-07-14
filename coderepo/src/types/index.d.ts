@@ -62,7 +62,7 @@ export type SidebarNavItem = {
 );
 
 export type ExampleFilter = {
-  title: "All" | "React" | "React Three Fiber" | "GSAP" | "Typescript";
+  title: "All" | "React" | "React Three Fiber" | "Typescript" | "Animations";
   icon: Icon;
 };
 
@@ -71,7 +71,7 @@ export type ExampleProject = {
   description: string;
   href: string;
   github: string;
-  filters: { title: string }[];
+  filters: { title: ExampleFilter["title"] }[];
 };
 
 export type ExamplesConfig = {
@@ -90,7 +90,8 @@ export type ResourcesFilter = {
     | "Design"
     | "3D Design"
     | "Useful Blogs"
-    | "Job Marketplace";
+    | "Job Marketplace"
+    | "Icons";
   icon: Icon;
 };
 export type Resource = {
