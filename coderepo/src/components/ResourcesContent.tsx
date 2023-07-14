@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { resourceConfig } from "@/config/resources";
 import { Button } from "@/components/ui/button";
 import { ResourcesCard } from "./ResourcesCard";
+import { cn } from "@/lib/utils";
 
 const ResourcesContent = () => {
   const [filterResources, setFilterResources] = useState(
@@ -30,13 +31,15 @@ const ResourcesContent = () => {
 
   return (
     <>
-      <div className="flex items-center gap-4 overflow-x-scroll custom-x-scrollbar">
+      <div className="flex items-center gap-4 overflow-x-scroll custom-x-scrollbar pb-8">
         {resourceConfig.filters.map(({ icon: Icon, ...filter }) => (
           <Button
             key={filter.title}
             variant="outline"
             onClick={() => handleFilterChange({ title: filter.title })}
-            className={`  ${activeFilter === filter.title ? "bg-accent" : ""}`}
+            className={cn(
+              `  ${activeFilter === filter.title ? "bg-accent" : ""}`
+            )}
           >
             <Icon className="mr-2 h-4 w-4" />
             <span className="whitespace-nowrap">{filter.title}</span>

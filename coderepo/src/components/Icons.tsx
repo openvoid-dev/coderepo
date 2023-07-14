@@ -21,6 +21,14 @@ import {
   Users,
   Framer,
   FlipHorizontal2,
+  Puzzle,
+  Palette,
+  Layout,
+  WholeWord,
+  Mail,
+  Bitcoin,
+  MonitorStop,
+  Image,
 } from "lucide-react";
 
 export type Icon = LucideIcon;
@@ -44,6 +52,14 @@ export const Icons = {
   community: Users,
   animation: Framer,
   icons: FlipHorizontal2,
+  ui: Puzzle,
+  colors: Palette,
+  inspiration: Layout,
+  fonts: WholeWord,
+  email: Mail,
+  web3: Bitcoin,
+  mockups: MonitorStop,
+  image: Image,
   gitHub: ({ className, ...props }: LucideProps) => (
     <svg
       aria-hidden="true"

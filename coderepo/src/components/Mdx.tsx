@@ -145,7 +145,9 @@ const components = {
       {...props}
     />
   ),
-  Image,
+  Image: ({ className, ...props }: any) => (
+    <Image className={cn("rounded-md border my-3", className)} {...props} />
+  ),
   Callout,
   Card: MdxCard,
 };

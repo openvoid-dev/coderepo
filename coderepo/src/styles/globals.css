@@ -85,7 +85,7 @@
 /* * Scrollbar classes */
 @screen md {
   .custom-x-scrollbar {
-    @apply scrollbar-thin scrollbar-thumb-sky-200 dark:scrollbar-thumb-slate-800 scrollbar-track-[#FFFFFF] dark:scrollbar-track-[#0F0F0F] pb-2;
+    @apply scrollbar-thin scrollbar-thumb-sky-200 dark:scrollbar-thumb-slate-800 scrollbar-track-[#FFFFFF] dark:scrollbar-track-[#0F0F0F] pb-2 cursor-pointer;
   }
 }
 

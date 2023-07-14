@@ -91,7 +91,15 @@ export type ResourcesFilter = {
     | "3D Design"
     | "Useful Blogs"
     | "Job Marketplace"
-    | "Icons";
+    | "Icons"
+    | "UI Components"
+    | "Colors"
+    | "Inspiration"
+    | "Fonts"
+    | "Emails"
+    | "Web3"
+    | "Mockups"
+    | "Stock Photos";
   icon: Icon;
 };
 export type Resource = {

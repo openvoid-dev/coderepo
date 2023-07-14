@@ -32,8 +32,40 @@ export const resourceConfig: ResourcesConfig = {
       icon: Icons.icons,
     },
     {
+      title: "UI Components",
+      icon: Icons.ui,
+    },
+    {
+      title: "Colors",
+      icon: Icons.colors,
+    },
+    {
+      title: "Inspiration",
+      icon: Icons.inspiration,
+    },
+    {
+      title: "Fonts",
+      icon: Icons.fonts,
+    },
+    {
+      title: "Emails",
+      icon: Icons.email,
+    },
+    {
+      title: "Web3",
+      icon: Icons.web3,
+    },
+    {
+      title: "Mockups",
+      icon: Icons.mockups,
+    },
+    {
       title: "Job Marketplace",
       icon: Icons.community,
+    },
+    {
+      title: "Stock Photos",
+      icon: Icons.image,
     },
   ],
   resources: [
@@ -96,7 +128,7 @@ export const resourceConfig: ResourcesConfig = {
       title: "Facetype.js",
       href: "http://gero3.github.io/facetype.js/",
       description: "typeface.js generator",
-      filters: [{ title: "Design" }],
+      filters: [{ title: "Fonts" }],
     },
     {
       title: "GLTF Generator",
@@ -121,13 +153,13 @@ export const resourceConfig: ResourcesConfig = {
       title: "Coolors",
       href: "https://coolors.co/palettes/trending",
       description: "Trending Color Palettes",
-      filters: [{ title: "Design" }],
+      filters: [{ title: "Colors" }],
     },
     {
       title: "Tailwind CSS Color Generator",
       href: "https://uicolors.app/create",
       description: "",
-      filters: [{ title: "Design" }],
+      filters: [{ title: "Colors" }],
     },
     {
       title: "Discover Three.js",
@@ -140,27 +172,27 @@ export const resourceConfig: ResourcesConfig = {
       title: "Awwwards",
       href: "https://www.awwwards.com/",
       description: "Website Awards - Best Web Design Trends",
-      filters: [{ title: "Design" }],
+      filters: [{ title: "Inspiration" }],
     },
     {
       title: "Dribbble",
       href: "https://dribbble.com/",
       description:
         "Discover the World's Top Designers & Creative Professionals",
-      filters: [{ title: "Design" }],
+      filters: [{ title: "Inspiration" }],
     },
     {
       title: "Behance",
       href: "https://www.behance.net/",
       description: "Showcase and discover creative work",
-      filters: [{ title: "Design" }],
+      filters: [{ title: "Inspiration" }],
     },
     {
       title: "Gradients for Tailwind CSS - HYPERCOLOR",
       href: "https://hypercolor.dev/",
       description:
         "A curated collection of beautiful Tailwind CSS gradients using the full range of Tailwind CSS colors.",
-      filters: [{ title: "Design" }, { title: "Web Development" }],
+      filters: [{ title: "Colors" }],
     },
     {
       title: "HDRI Haven",
@@ -184,7 +216,7 @@ export const resourceConfig: ResourcesConfig = {
       title: "Random colors",
       href: "https://randoma11y.com/",
       description: "Randomly generated accessibility tips",
-      filters: [{ title: "Web Development" }, { title: "Design" }],
+      filters: [{ title: "Colors" }],
     },
     {
       title: "Joberty",
@@ -222,7 +254,7 @@ export const resourceConfig: ResourcesConfig = {
       href: "https://www.freefaces.gallery/",
       description:
         "Curated collection of typefaces that are available under a variety of free licences somewhere on the interwebs.",
-      filters: [{ title: "Design" }],
+      filters: [{ title: "Fonts" }],
     },
     {
       title: "Icons8",
@@ -247,6 +279,111 @@ export const resourceConfig: ResourcesConfig = {
       href: "https://react-icons.github.io/react-icons/",
       description: "Popular icons in your React projects",
       filters: [{ title: "Icons" }],
+    },
+    {
+      title: "Shadcn UI",
+      href: "https://ui.shadcn.com/",
+      description: "Build your component library.",
+      filters: [{ title: "UI Components" }],
+    },
+    {
+      title: "Radix UI",
+      href: "https://www.radix-ui.com/",
+      description:
+        "Unstyled, accessible components for building high-quality design systems and web apps in React.",
+      filters: [{ title: "UI Components" }],
+    },
+    {
+      title: "Tailwind UI",
+      href: "https://tailwindui.com/",
+      description:
+        "Beautiful UI components, crafted by the creators of Tailwind CSS.",
+      filters: [{ title: "UI Components" }],
+    },
+    {
+      title: "Headless UI",
+      href: "https://headlessui.com/",
+      description:
+        "Completely unstyled, fully accessible UI components, designed to integrate beautifully with Tailwind CSS.",
+      filters: [{ title: "UI Components" }],
+    },
+    {
+      title: "Google Fonts",
+      href: "https://fonts.google.com/",
+      description:
+        "Making the web more beautiful, fast, and open through great typography",
+      filters: [{ title: "Fonts" }],
+    },
+    {
+      title: "Resend",
+      href: "https://resend.com/",
+      description: "Email for developers",
+      filters: [{ title: "Emails" }],
+    },
+    {
+      title: "Mailchimp",
+      href: "https://mailchimp.com/",
+      description:
+        "Mailchimp is the All-In-One integrated marketing platform for small businesses, to grow your business on your terms.",
+      filters: [{ title: "Emails" }],
+    },
+    {
+      title: "Makerkit",
+      href: "https://makerkit.dev/courses/nextjs-app-router",
+      description:
+        "The Next.js course you need for building an AI SaaS from scratch",
+      filters: [{ title: "Courses" }],
+    },
+    {
+      title: "EVM Kit",
+      href: "https://www.evmkit.com/",
+      description: "Build web3 apps faster than ever",
+      filters: [{ title: "Web3" }],
+    },
+    {
+      title: "Third Web",
+      href: "https://thirdweb.com/",
+      description: "The fastest way to build web3 apps.",
+      filters: [{ title: "Web3" }],
+    },
+    {
+      title: "Angle",
+      href: "https://angle.sh/",
+      description: "Vector device mockups for Sketch, Figma and XD",
+      filters: [{ title: "Mockups" }],
+    },
+    {
+      title: "Device Frames",
+      href: "https://deviceframes.com/",
+      description: "Device Mockups for Perfect Presentations",
+      filters: [{ title: "Mockups" }],
+    },
+    {
+      title: "Mockuuups Studio",
+      href: "https://mockuuups.studio/",
+      description: "Your Search for Perfect Mockups Ends Here.",
+      filters: [{ title: "Mockups" }],
+    },
+    {
+      title: "Central Icon System",
+      href: "https://iconists.co/central",
+      description:
+        "The central icon system was designed to be as universally applicable as possible and utilizes Figma variants and properties to offer a completely customizable icon set. ",
+      filters: [{ title: "Icons" }],
+    },
+    {
+      title: "Landing Love",
+      href: "https://www.landing.love/",
+      description:
+        "Landing Love is a curated collection of landing page design inspiration. Updated every day.",
+      filters: [{ title: "Inspiration" }],
+    },
+    {
+      title: "Unsplash",
+      href: "https://unsplash.com/",
+      description:
+        "Beautiful, free images and photos that you can download and use for any project. Better than any royalty free or stock photos.",
+      filters: [{ title: "Stock Photos" }],
     },
   ],
 };
