@@ -52,7 +52,7 @@ export function ResourcesCard({
       </CardHeader>
       <CardFooter>
         <a href={href} className="w-full" target="_blank">
-          <Button className="w-full" variant="secondary">
+          <Button className="w-full" variant="outline">
             <Icons.externalLink className="mr-2 h-4 w-4" /> View Resource
           </Button>
         </a>

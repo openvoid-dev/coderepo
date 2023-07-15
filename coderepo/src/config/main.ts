@@ -60,9 +60,9 @@ export const mainConfig: MainConfig = {
       icon: Icons.react,
     },
     {
-      title: "Database",
-      description: "ORM using Prisma and deployed on PlanetScale.",
-      icon: Icons.database,
+      title: "TypeScript",
+      description: "TypeScript extends JavaScript by adding types.",
+      icon: Icons.typescript,
     },
     {
       title: "Components",
@@ -76,9 +76,9 @@ export const mainConfig: MainConfig = {
       icon: Icons.auth,
     },
     {
-      title: "Subscriptions",
-      description: "Free and paid subscriptions using Stripe.",
-      icon: Icons.subscription,
+      title: "Design",
+      description: "Design system using Radix UI and Tailwind CSS.",
+      icon: Icons.design,
     },
   ],
 };
