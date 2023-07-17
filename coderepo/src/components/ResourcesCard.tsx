@@ -47,7 +47,7 @@ export function ResourcesCard({
   return (
     <Card className="flex flex-col justify-between">
       <CardHeader>
-        <CardTitle>{title}</CardTitle>
+        <CardTitle className="leading-6">{title}</CardTitle>
         <CardDescription>{description}</CardDescription>
       </CardHeader>
       <CardFooter>
