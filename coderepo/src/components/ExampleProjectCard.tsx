@@ -69,7 +69,7 @@ export function ExampleProjectCard({
           <Link
             href={github}
             className={cn(
-              buttonVariants({ variant: "ghost", size: "lg" }),
+              buttonVariants({ variant: "outline", size: "lg" }),
               "flex-1"
             )}
           >

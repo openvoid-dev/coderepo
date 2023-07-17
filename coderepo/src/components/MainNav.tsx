@@ -33,7 +33,7 @@ const MainNav = ({ items, children }: MainNavProps) => {
             </span>
           </Link>
           {items?.length && (
-            <div className="hidden gap-6 md:flex">
+            <div className="hidden gap-6 lg:flex">
               {items.map((item, index) => (
                 <Link
                   key={item.title + "-" + index}
