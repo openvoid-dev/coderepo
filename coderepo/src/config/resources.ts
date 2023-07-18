@@ -385,5 +385,12 @@ export const resourceConfig: ResourcesConfig = {
         "Beautiful, free images and photos that you can download and use for any project. Better than any royalty free or stock photos.",
       filters: [{ title: "Stock Photos" }],
     },
+    {
+      title: "Flowbite",
+      href: "https://flowbite.com/",
+      description:
+        "Build websites even faster with components on top of Tailwind CSS",
+      filters: [{ title: "UI Components" }],
+    },
   ],
 };
