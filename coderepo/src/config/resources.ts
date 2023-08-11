@@ -392,5 +392,12 @@ export const resourceConfig: ResourcesConfig = {
         "Build websites even faster with components on top of Tailwind CSS",
       filters: [{ title: "UI Components" }],
     },
+    {
+      title: "Iconfinder",
+      href: "https://www.iconfinder.com/",
+      description:
+        "Millions of graphics for your design projects. Created by independent designers.",
+      filters: [{ title: "Icons" }],
+    },
   ],
 };
