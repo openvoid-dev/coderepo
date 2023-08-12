@@ -99,7 +99,8 @@ export type ResourcesFilter = {
     | "Emails"
     | "Web3"
     | "Mockups"
-    | "Stock Photos";
+    | "Stock Photos"
+    | "Golang";
   icon: Icon;
 };
 export type Resource = {

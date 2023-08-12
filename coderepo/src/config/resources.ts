@@ -67,6 +67,10 @@ export const resourceConfig: ResourcesConfig = {
       title: "Stock Photos",
       icon: Icons.image,
     },
+    {
+      title: "Golang",
+      icon: Icons.golang,
+    },
   ],
   resources: [
     {
@@ -398,6 +402,39 @@ export const resourceConfig: ResourcesConfig = {
       description:
         "Millions of graphics for your design projects. Created by independent designers.",
       filters: [{ title: "Icons" }],
+    },
+    {
+      title: "Go Web Examples",
+      href: "https://gowebexamples.com/",
+      description: "Learn Web Programming in Go by Examples",
+      filters: [{ title: "Golang" }],
+    },
+    {
+      title: "Go by Example",
+      href: "https://gobyexample.com/",
+      description:
+        "Go by Example is a hands-on introduction to Go using annotated example programs.",
+      filters: [{ title: "Golang" }],
+    },
+    {
+      title: "Go Dev Packages",
+      href: "https://pkg.go.dev/",
+      description: "The Go standard library packages and their documentation.",
+      filters: [{ title: "Golang" }],
+    },
+    {
+      title: "Webapp.io",
+      href: "https://webapp.io/blog/",
+      description:
+        "Webapp.io is a blog about web development, design, and entrepreneurship.",
+      filters: [{ title: "Useful Blogs" }],
+    },
+    {
+      title: "Dev.to",
+      href: "https://dev.to/",
+      description:
+        "Where programmers share ideas and help each other grow. It is an online community for sharing and discovering great ideas, having debates, and making friends.",
+      filters: [{ title: "Useful Blogs" }],
     },
   ],
 };

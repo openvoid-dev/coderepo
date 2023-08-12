@@ -7,16 +7,16 @@ export const docsConfig: DocsConfig = {
       href: "/docs",
     },
     {
+      title: "Examples",
+      href: "/examples",
+    },
+    {
       title: "Guides",
       href: "/guides",
     },
     {
-      title: "Blog",
-      href: "/blog",
-    },
-    {
-      title: "Examples",
-      href: "/examples",
+      title: "Resources",
+      href: "/resources",
     },
   ],
   sidebarNav: [

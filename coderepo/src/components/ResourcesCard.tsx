@@ -48,7 +48,9 @@ export function ResourcesCard({
     <Card className="flex flex-col justify-between">
       <CardHeader>
         <CardTitle className="leading-6">{title}</CardTitle>
-        <CardDescription>{description}</CardDescription>
+        <CardDescription className="line-clamp-3">
+          {description}
+        </CardDescription>
       </CardHeader>
       <CardFooter>
         <a href={href} className="w-full" target="_blank">
