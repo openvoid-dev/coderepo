@@ -436,5 +436,12 @@ export const resourceConfig: ResourcesConfig = {
         "Where programmers share ideas and help each other grow. It is an online community for sharing and discovering great ideas, having debates, and making friends.",
       filters: [{ title: "Useful Blogs" }],
     },
+    {
+      title: "Xing",
+      href: "https://www.xing.com/",
+      description:
+        "XING is your personal career companion. Add new professional contacts and discover exciting jobs, events, news and groups.",
+      filters: [{ title: "Job Marketplace" }],
+    },
   ],
 };
