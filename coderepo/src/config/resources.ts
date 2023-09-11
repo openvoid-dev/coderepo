@@ -443,5 +443,40 @@ export const resourceConfig: ResourcesConfig = {
         "XING is your personal career companion. Add new professional contacts and discover exciting jobs, events, news and groups.",
       filters: [{ title: "Job Marketplace" }],
     },
+    {
+      title: "SYMBL",
+      href: "https://symbl.cc/en/",
+      description:
+        "WHEN TEXT IS NOT ENOUGH",
+      filters: [{ title: "Fonts" }],
+    },
+    {
+      title: "Matcha.fyi",
+      href: "https://matcha.fyi/",
+      description:
+        "",
+      filters: [{ title: "Useful Blogs" }],
+    },
+    {
+      title: "Stackoverflow blog",
+      href: "https://stackoverflow.blog/",
+      description:
+        "",
+      filters: [{ title: "Useful Blogs" }],
+    },
+    {
+      title: "Github blog",
+      href: "https://github.blog/",
+      description:
+        "",
+      filters: [{ title: "Useful Blogs" }],
+    },
+    {
+      title: "Daily.dev",
+      href: "https://daily.dev/",
+      description:
+        "Get one personalized feed for all the knowledge you need. Make learning a daily habit or just do something useful while you're in endless meetings",
+      filters: [{ title: "Useful Blogs" }],
+    },
   ],
 };
