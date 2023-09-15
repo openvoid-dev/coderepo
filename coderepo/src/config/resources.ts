@@ -478,5 +478,12 @@ export const resourceConfig: ResourcesConfig = {
         "Get one personalized feed for all the knowledge you need. Make learning a daily habit or just do something useful while you're in endless meetings",
       filters: [{ title: "Useful Blogs" }],
     },
+    {
+      title: "google-webfonts-helper",
+      href: "https://gwfh.mranftl.com/fonts",
+      description:
+        "A Hassle-Free Way to Self-Host Google Fonts",
+      filters: [{ title: "Fonts" }],
+    },
   ],
 };
