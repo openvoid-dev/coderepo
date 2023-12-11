@@ -446,29 +446,25 @@ export const resourceConfig: ResourcesConfig = {
     {
       title: "SYMBL",
       href: "https://symbl.cc/en/",
-      description:
-        "WHEN TEXT IS NOT ENOUGH",
+      description: "WHEN TEXT IS NOT ENOUGH",
       filters: [{ title: "Fonts" }],
     },
     {
       title: "Matcha.fyi",
       href: "https://matcha.fyi/",
-      description:
-        "",
+      description: "",
       filters: [{ title: "Useful Blogs" }],
     },
     {
       title: "Stackoverflow blog",
       href: "https://stackoverflow.blog/",
-      description:
-        "",
+      description: "",
       filters: [{ title: "Useful Blogs" }],
     },
     {
       title: "Github blog",
       href: "https://github.blog/",
-      description:
-        "",
+      description: "",
       filters: [{ title: "Useful Blogs" }],
     },
     {
@@ -481,9 +477,15 @@ export const resourceConfig: ResourcesConfig = {
     {
       title: "google-webfonts-helper",
       href: "https://gwfh.mranftl.com/fonts",
-      description:
-        "A Hassle-Free Way to Self-Host Google Fonts",
+      description: "A Hassle-Free Way to Self-Host Google Fonts",
       filters: [{ title: "Fonts" }],
+    },
+    {
+      title: "Shots",
+      href: "https://shots.so/",
+      description:
+        "Craft beautiful presentations for your social media, website and more!",
+      filters: [{ title: "Mockups" }],
     },
   ],
 };
