@@ -1,0 +1,43 @@
+---
+import '@/styles/globals.css'
+import Layout from '../layouts/Layout.astro';
+
+import {cn} from "../lib/utils.ts";
+import { buttonVariants } from "@/components/ui/button"
+
+// const response = await fetch('http://localhost:8080/');
+// const data = await response.json();
+---
+
+<Layout title="Welcome to Astro.">
+	<main class="container">
+		 {/* Hero */}
+		 <section class="space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:py-32">
+			<div class="container flex max-w-[74rem] flex-col items-center gap-4 text-center">
+			  <h1 class="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl dark:text-white">
+				Code Repo: Exploring Web Technologies and Documentation
+			  </h1>
+			  <p class="max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8">
+				A Comprehensive Repository of Web Technology Examples and
+				Documentation for Developers
+			  </p>
+			  <div class="space-x-4">
+				<a
+				  href="/examples"
+				  class={cn(buttonVariants({ size: "lg" }))}
+				>
+				  Examples
+				</a>
+				<a
+				  href="#"
+				  target="_blank"
+				  rel="noreferrer"
+				  class={cn(buttonVariants({ variant: "outline", size: "lg" }))}
+				>
+				  GitHub
+				</a>
+			  </div>
+			</div>
+		  </section>
+	</main>
+</Layout>
