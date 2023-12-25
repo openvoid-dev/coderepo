@@ -1,0 +1,26 @@
+---
+import { cn } from "@/lib/utils";
+
+import { buttonVariants } from "@/components/ui/button";
+import {CommandMenu} from "@/components/CommandMenu.tsx";
+---
+
+<header class="sticky top-0 border-b-2 border-muted py-4 bg-background/75 backdrop-blur-2xl">
+    <nav class="container flex justify-between items-center">
+        <div class="flex items-center gap-6">
+            <div class="mr-6">
+                <a href="/" class="font-heading text-xl">Code Repo</a>
+            </div>
+            <a  href="/examples" class="text-muted-foreground hover:text-foreground transition-colors duration-300">Examples</a>
+            <a  href="/resources" class="text-muted-foreground hover:text-foreground transition-colors duration-300">Resources</a>
+            <a  href="/guides" class="text-muted-foreground hover:text-foreground transition-colors duration-300">Guides</a>
+            <a  href="/templates" class="text-muted-foreground hover:text-foreground transition-colors duration-300">Templates</a>
+            <a  href="/playground" class="text-muted-foreground hover:text-foreground transition-colors duration-300">Playground</a>
+        </div>
+
+        <div class="flex items-center gap-3">
+            <CommandMenu client:load />
+            <a href="" class={cn(buttonVariants({size: "sm"}))}>Login</a>
+        </div>
+    </nav>
+</header>

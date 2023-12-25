@@ -1,3 +1,5 @@
+const defaultTheme = require("tailwindcss/defaultTheme");
+
 /** @type {import('tailwindcss').Config} */
 export default {
   darkMode: ["class"],
@@ -5,11 +7,22 @@ export default {
   theme: {
     container: {
       center: true,
-      padding: "2rem",
+      padding: {
+        DEFAULT: "1rem",
+        sm: "2rem",
+      },
     },
     extend: {
+      fontFamily: {
+        sans: [
+          "Nunito Variable",
+          "sans-serif",
+          ...defaultTheme.fontFamily.sans,
+        ],
+        heading: ["Lora Variable", "sans-serif"],
+      },
       screens: {
-        "2xl": "1400px",
+        // "2xl": "1400px",
       },
       colors: {
         border: "hsl(var(--border))",
