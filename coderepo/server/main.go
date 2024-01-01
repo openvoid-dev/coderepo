@@ -1,17 +1,21 @@
-// main.go
 package main
 
 import (
-	"github.com/AntonioObra/coderepo/routes"
-	"github.com/gin-gonic/gin"
+	"log"
+	"server/database"
+
+	"github.com/gofiber/fiber/v2"
 )
 
+func welcome(c *fiber.Ctx) error {
+	return c.SendString("Welcome to my awesome APIresi!")
+}
+
 func main() {
-	router := gin.Default()
+	database.ConnectDb()
+	app := fiber.New()
 
-	// Initialize routes
-	routes.SetupRoutes(router)
+	app.Get("/api", welcome)
 
-	// Start the server
-	router.Run(":8080")
+	log.Fatal(app.Listen(":8080"))
 }
