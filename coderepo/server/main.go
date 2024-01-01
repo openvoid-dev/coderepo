@@ -3,19 +3,16 @@ package main
 import (
 	"log"
 	"server/database"
+	"server/routes"
 
 	"github.com/gofiber/fiber/v2"
 )
-
-func welcome(c *fiber.Ctx) error {
-	return c.SendString("Welcome to my awesome APIresi!")
-}
 
 func main() {
 	database.ConnectDb()
 	app := fiber.New()
 
-	app.Get("/api", welcome)
+	routes.SetupRoutes(app)
 
 	log.Fatal(app.Listen(":8080"))
 }
