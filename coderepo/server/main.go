@@ -12,7 +12,9 @@ func main() {
 	database.ConnectDb()
 	app := fiber.New()
 
-	routes.SetupRoutes(app)
+	// * Setup routes
+	routes.UserRoutes(app)
+	routes.GuideRoutes(app)
 
 	log.Fatal(app.Listen(":8080"))
 }

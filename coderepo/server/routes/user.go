@@ -6,8 +6,8 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-func SetupRoutes(app *fiber.App) {
-	// * User endpoints
+// * User endpoints
+func UserRoutes(app *fiber.App) {
 	app.Post("/api/users/signup", controllers.SignUp)
 	app.Post("/api/users/signin", controllers.SignIn)
 }
