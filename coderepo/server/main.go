@@ -15,6 +15,7 @@ func main() {
 	// * Setup routes
 	routes.UserRoutes(app)
 	routes.GuideRoutes(app)
+	routes.ResourceRoutes(app)
 
 	log.Fatal(app.Listen(":8080"))
 }
