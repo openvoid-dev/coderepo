@@ -19,10 +19,11 @@ export default {
           "sans-serif",
           ...defaultTheme.fontFamily.sans,
         ],
-        heading: ["Lora Variable", "sans-serif"],
+        heading: ["Nunito", "sans-serif"],
       },
       screens: {
-        // "2xl": "1400px",
+        xl: "1280px",
+        "2xl": "1400px",
       },
       colors: {
         border: "hsl(var(--border))",
@@ -58,6 +59,7 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        customblue: "hsl(var(--blue))",
       },
       borderRadius: {
         lg: "var(--radius)",
