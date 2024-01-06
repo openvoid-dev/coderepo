@@ -1,6 +1,8 @@
 package controllers
 
 import (
+	"crypto/rand"
+	"crypto/rsa"
 	"fmt"
 	"log"
 	"server/database"
@@ -14,7 +16,17 @@ import (
 )
 
 // ! JWT secret key (change this to a strong, random key in production)
-var jwtSecret = []byte("your-secret-key")
+var jwtPrivateKey *rsa.PrivateKey
+
+func init() {
+	// Generate a temporary RSA private key for demonstration purposes
+	privateKey, err := rsa.GenerateKey(rand.Reader, 2048)
+	if err != nil {
+		log.Fatal("Error generating RSA private key:", err)
+	}
+
+	jwtPrivateKey = privateKey
+}
 
 // * Function to handle the /api/users/signup endpoint, which is used to create a new user
 func SignUp(c *fiber.Ctx) error {
@@ -62,20 +74,9 @@ func SignUp(c *fiber.Ctx) error {
 		})
 	}
 
-	// * Create a JWT token
-	token, err := generateToken(newUser.ID)
-	if err != nil {
-		fmt.Println("Error generating JWT token:", err)
-		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
-			"error": "Error generating JWT token",
-		})
-	}
-
 	fmt.Println("User created successfully:", newUser.Username)
 	return c.Status(fiber.StatusCreated).JSON(fiber.Map{
 		"message": "User created successfully",
-		"user":    newUser,
-		"token":   token,
 	})
 }
 
@@ -154,15 +155,15 @@ func SignIn(c *fiber.Ctx) error {
 // * generateToken function to generate a JWT token
 func generateToken(userID uint) (string, error) {
 	// Create the token
-	token := jwt.New(jwt.SigningMethodHS256)
+	token := jwt.New(jwt.SigningMethodRS256)
 
 	// Set claims
 	claims := token.Claims.(jwt.MapClaims)
 	claims["sub"] = userID
 	claims["exp"] = time.Now().Add(time.Hour * 24).Unix() // Token expires in 24 hours
 
-	// Sign the token with the secret key
-	tokenString, err := token.SignedString(jwtSecret)
+	// Sign the token with the RSA private key
+	tokenString, err := token.SignedString(jwtPrivateKey)
 	if err != nil {
 		return "", err
 	}
