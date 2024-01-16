@@ -8,11 +8,11 @@ export default function Home() {
       {/* Hero */}
       <section className="pb-8 pt-6 md:pb-12 md:pt-10 lg:py-32 ">
         <div className="container flex flex-col items-center gap-6">
-          <a href="/templates" className="flex items-center gap-2 bg-red-900/10 text-red-200 rounded-full px-4 py-2 border border-red-700/75 font-semibold">Checkout new starter templates. <Icons.arrowRight className="w-5 h-5 font-semibold" /></a>
+          <a href="/templates" className="flex items-center gap-2 bg-red-900/10 text-red-200 rounded-full px-4 py-2 border border-red-700/75 font-semibold font-heading">Checkout new starter templates. <Icons.arrowRight className="w-5 h-5 font-semibold" /></a>
           <h1 className="font-bold font-heading text-center text-4xl md:text-5xl lg:text-6xl xl:text-7xl pt-4 pb-2 overflow-hidden">
             <span className="
 					  bg-gradient-to-bl bg-no-repeat bg-bottom bg-[length:100%_40%]
-					  from-primary to-primary dark:from-primary/50 dark:to-primary/50
+					  from-primary to-primary dark:from-primary dark:to-primary
 				  ">
               Code Repo: Exploring Web Technologies and Documentation
             </span>
