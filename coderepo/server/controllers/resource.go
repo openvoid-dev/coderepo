@@ -12,6 +12,7 @@ type ResourceCategoryResponse struct {
 	Name        string `json:"name"`
 	Slug        string `json:"slug"`
 	Description string `json:"description"`
+	Icon        string `json:"icon"`
 }
 
 type ResourceCategoryWithResourcesResponse struct {
@@ -19,6 +20,7 @@ type ResourceCategoryWithResourcesResponse struct {
 	Name        string `json:"name"`
 	Slug        string `json:"slug"`
 	Description string `json:"description"`
+	Icon        string `json:"icon"`
 	Resources   []struct {
 		Name        string `json:"name"`
 		Link        string `json:"link"`
@@ -41,6 +43,7 @@ func GetAllResourceCategories(c *fiber.Ctx) error {
 			Name:        resourceCategory.Name,
 			Slug:        resourceCategory.Slug,
 			Description: resourceCategory.Description,
+			Icon:        resourceCategory.Icon,
 		}
 		resourceCategoriesResponse = append(resourceCategoriesResponse, resourceCategoryResponse)
 	}
@@ -65,6 +68,7 @@ func GetResourceCategoryBySlug(c *fiber.Ctx) error {
 		Name:        resourceCategory.Name,
 		Slug:        resourceCategory.Slug,
 		Description: resourceCategory.Description,
+		Icon:        resourceCategory.Icon,
 	}
 	for _, resource := range resourceCategory.Resources {
 		resourceCategoryResponse.Resources = append(resourceCategoryResponse.Resources, struct {
