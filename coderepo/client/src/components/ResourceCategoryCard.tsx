@@ -1,33 +1,33 @@
-import { Icons } from "@/components/Icons";
-import { ResourceCategory } from "@/types/resources";
 import Link from "next/link";
 
+import { Icons } from "@/components/Icons";
+import { ResourceCategory } from "@/types/resources";
+
 const ResourceCategoryCard = ({
-  icon,
-  id,
-  slug,
-  name,
-  description,
+    icon,
+    slug,
+    name,
+    description,
 }: ResourceCategory) => {
-  const IconComponent = Icons[icon];
+    const IconComponent = Icons[icon];
 
-  return (
-    <Link href={`/resources/${slug}`}>
-      <div className="bg-background border-2 border-muted rounded-lg px-6 py-20 relative group hover:border-primary transition-all duration-300">
-        <div className="absolute top-1/2 left-1/2  h-1/2 w-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
-          <IconComponent className="w-full h-full text-muted/30 group-hover:text-primary/30 transition-colors duration-300 " />
-        </div>
+    return (
+        <Link href={`/resources/${slug}`}>
+            <div className="bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-secondary via-background to-background border-2 border-muted rounded-lg p-8 relative group">
+                <div className="p-4 w-fit rounded-full border border-muted-foreground relative before:absolute before:w-[calc(100%+4px)] before:h-[calc(100%+20px)] before:inset-0 before:border-x after:absolute after:w-[calc(100%+20px)] after:h-[calc(100%+4px)] after:inset-0 after:border-y before:border-muted after:border-muted after:-translate-x-[10px] before:-translate-y-[10px] before:-translate-x-[2px] after:-translate-y-[2px] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-secondary to-background">
+                    <IconComponent className="w-8 h-8 text-muted-foreground" />
+                </div>
 
-        <hgroup className="flex flex-col items-center justify-center relative z-10">
-          <h1 className="text-4xl font-semibold text-foreground font-heading dark:text-primary-light mb-2 text-center">
-            {name}
-          </h1>
-          <p className="text-lg text-muted-foreground dark:text-muted-light text-center">
-            {description}
-          </p>
-        </hgroup>
-      </div>
-    </Link>
-  );
+                <hgroup className="flex flex-col mt-10">
+                    <h1 className="text-2xl font-semibold text-foreground font-heading dark:text-primary-light mb-2 text-left">
+                        {name}
+                    </h1>
+                    <p className="text-md text-muted-foreground dark:text-muted-light text-left">
+                        {description}
+                    </p>
+                </hgroup>
+            </div>
+        </Link>
+    );
 };
 export default ResourceCategoryCard;

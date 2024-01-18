@@ -16,7 +16,7 @@ export default async function ResourceSinglePage({
         text={resourceCategory.description}
       />
 
-      <section className="container grid grid-cols-1 md:grid-cols-3 mt-20">
+      <section className="container grid grid-cols-1 md:grid-cols-4 mt-20">
         {resources.map((resource, index) => (
           <ResourceCard key={resource.name + index} {...resource} />
         ))}

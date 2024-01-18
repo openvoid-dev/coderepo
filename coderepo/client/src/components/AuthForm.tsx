@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
 
-import { Button } from "@/components/ui/button"
+import { Button, buttonVariants } from "@/components/ui/button"
 import {
     Form,
     FormControl,
@@ -18,6 +18,8 @@ import { Input } from "@/components/ui/input"
 import { signIn } from "next-auth/react"
 
 import { useRouter } from 'next/navigation';
+import Link from "next/link"
+import { cn } from "@/lib/utils"
 
 const signInSchema = z.object({
     email: z.string().email({
@@ -73,7 +75,7 @@ const AuthForm = () => {
                         <FormItem>
                             <FormLabel>Email</FormLabel>
                             <FormControl>
-                                <Input placeholder="info@coderepo.dev" {...field} />
+                                <Input placeholder="coderepo@obradovic.dev" {...field} />
                             </FormControl>
                             <FormMessage className="text-red-500" />
                         </FormItem>
@@ -93,17 +95,18 @@ const AuthForm = () => {
                     )}
                 />
                 <FormDescription>
-                    <a href="#" className="text-red-500 hover:underline">
+                    <Link href="#" className="text-purple-accent hover:underline">
                         Forgot password?
-                    </a>
+                    </Link>
                 </FormDescription>
                 <Button type="submit" className="w-full" variant="secondary">Sign In</Button>
 
                 <FormDescription className="text-center">
                     Don&apos;t have an account?{" "}
-                    <a href="/signup" className="text-red-500 hover:underline">
+
+                    <Link href="/signup" className={cn(buttonVariants({ variant: "link" }), "p-0")}>
                         Sign up
-                    </a>
+                    </Link>
                 </FormDescription>
             </form>
         </Form>

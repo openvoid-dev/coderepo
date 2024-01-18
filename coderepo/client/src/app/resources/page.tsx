@@ -14,7 +14,7 @@ export default async function ResourcesPage() {
                 text="Unlocking a Treasure Trove of Tools, Tutorials, and References for Seamless Web Development Success"
             />
 
-            <section className="container grid grid-cols-1 md:grid-cols-3 mt-20">
+            <section className="container grid grid-cols-1 md:grid-cols-3 mt-20 gap-6">
                 {resources.map((resource, index) => (
                     <ResourceCategoryCard
                         key={resource.id + index}
