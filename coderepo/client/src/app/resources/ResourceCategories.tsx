@@ -1,6 +1,6 @@
 "use client";
 
-import { useSuspenseQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 
 import ResourceCategoryCard from "@/components/ResourceCategoryCard";
 
@@ -12,10 +12,9 @@ const ResourceCategories = () => {
         isLoading,
         error,
         data: resources,
-    } = useSuspenseQuery<ResourceCategory[]>({
+    } = useQuery<ResourceCategory[]>({
         queryKey: ["resource-categories"],
         queryFn: async () => await getAllResourceCategories(),
-        staleTime: 5 * 1000,
     });
 
     if (isLoading) {

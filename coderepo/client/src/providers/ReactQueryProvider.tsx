@@ -5,7 +5,15 @@ import { ReactQueryStreamedHydration } from "@tanstack/react-query-next-experime
 import { useState } from "react";
 
 function ReactQueryProvider({ children }: React.PropsWithChildren) {
-    const [queryClient] = useState(new QueryClient());
+    const [queryClient] = useState(
+        new QueryClient({
+            defaultOptions: {
+                queries: {
+                    staleTime: 60 * 1000,
+                },
+            },
+        })
+    );
 
     return (
         <QueryClientProvider client={queryClient}>

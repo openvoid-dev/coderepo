@@ -2,18 +2,14 @@
 
 import PageHeader from "@/components/PageHeader";
 import ResourceCard from "@/components/ResourceCard";
+import { ResourcesBySlugResult } from "@/types/resources";
 import { getResourcesBySlug } from "@/utils/resources";
-import { useSuspenseQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 
 const Resources = ({ slug }: { slug: string }) => {
-    const {
-        isLoading,
-        error,
-        data: { resources, resourceCategory },
-    } = useSuspenseQuery({
+    const { isLoading, error, data } = useQuery<ResourcesBySlugResult>({
         queryKey: ["resources", slug],
         queryFn: async () => await getResourcesBySlug(slug),
-        staleTime: 5 * 1000,
     });
 
     if (isLoading) {
@@ -24,9 +20,11 @@ const Resources = ({ slug }: { slug: string }) => {
         return <div>Error: {error.message}</div>;
     }
 
-    if (!resources) {
+    if (!data) {
         return <div>No Resources Found</div>;
     }
+
+    const { resourceCategory, resources } = data;
 
     return (
         <>

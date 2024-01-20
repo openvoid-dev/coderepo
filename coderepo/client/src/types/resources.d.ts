@@ -12,7 +12,7 @@ export interface Resource {
     description: string;
 }
 
-interface ResourcesBySlugResult {
+export interface ResourcesBySlugResult {
     // Define the structure of the result
     resourceCategory: ResourceCategory;
     resources: Resource[];
