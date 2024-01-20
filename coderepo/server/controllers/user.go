@@ -42,15 +42,6 @@ func GetCurrentUser(c *fiber.Ctx) error {
 	// Get the user email from the URL
 	email := c.Params("email")
 
-	//  // Authenticate the user - validate the token
-	//  user, err := authenticateUser(c)
-	//  if err != nil {
-	// 	 // Authentication failed
-	// 	 return c.Status(fiber.StatusUnauthorized).JSON(fiber.Map{
-	// 		 "error": "Unauthorized",
-	// 	 })
-	//  }
-
 	// * Retrieve the user from the database based on the provided email
 	var existingUser models.User
 	result := database.Database.Db.Where("email = ?", email).First(&existingUser)
