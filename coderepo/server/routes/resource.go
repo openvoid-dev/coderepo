@@ -8,5 +8,6 @@ import (
 
 func ResourceRoutes(app *fiber.App) {
 	app.Get("/api/resources", controllers.GetAllResourceCategories)
+	app.Get("/api/resources/all", controllers.GetAllResources)
 	app.Get("/api/resources/:slug", controllers.GetResourceCategoryBySlug)
 }

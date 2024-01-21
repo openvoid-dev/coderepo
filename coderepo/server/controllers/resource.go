@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"fmt"
 	"server/database"
 	"server/models"
 
@@ -26,6 +27,12 @@ type ResourceCategoryWithResourcesResponse struct {
 		Link        string `json:"link"`
 		Description string `json:"description"`
 	} `json:"resources"`
+}
+type ResourceResponse struct {
+	ID          uint   `json:"id"`
+	Name        string `json:"name"`
+	Link        string `json:"link"`
+	Description string `json:"description"`
 }
 
 func GetAllResourceCategories(c *fiber.Ctx) error {
@@ -84,4 +91,28 @@ func GetResourceCategoryBySlug(c *fiber.Ctx) error {
 
 	// * Return the resource category as JSON
 	return c.Status(fiber.StatusAccepted).JSON(resourceCategoryResponse)
+}
+
+func GetAllResources(c *fiber.Ctx) error {
+	// * Retrieve all resources from the database
+	var resources []models.Resource
+	if err := database.Database.Db.Find(&resources).Error; err != nil {
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{"error": "Error retrieving resources"})
+	}
+
+	// * Create the response structure
+	var resourcesResponse []ResourceResponse
+	for _, resource := range resources {
+		resourceResponse := ResourceResponse{
+			ID:          resource.ID,
+			Name:        resource.Name,
+			Link:        resource.Link,
+			Description: resource.Description,
+		}
+		resourcesResponse = append(resourcesResponse, resourceResponse)
+	}
+
+	// * Return the resources as JSON
+	fmt.Println("Get all resources")
+	return c.Status(fiber.StatusAccepted).JSON(resourcesResponse)
 }
