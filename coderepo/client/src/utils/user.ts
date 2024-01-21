@@ -2,7 +2,7 @@ import jwt from "jsonwebtoken";
 
 const generateToken = (userEmail: string): string => {
     const secretKey = "your-secret-key"; // Replace with your actual secret key
-    const token = jwt.sign({ userEmail }, secretKey, { expiresIn: "1h" }); // Token expires in 1 hour
+    const token = jwt.sign({ userEmail }, secretKey, { expiresIn: "1h" });
 
     return token;
 };
@@ -23,13 +23,13 @@ export const getCurrentUser = async (userEmail: string) => {
         );
 
         if (!currentUser) {
-            return null;
+            throw new Error("User not found");
         }
 
         const { user } = await currentUser.json();
 
         return user;
     } catch (error: any) {
-        return null;
+        return error.message;
     }
 };

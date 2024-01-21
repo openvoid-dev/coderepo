@@ -14,7 +14,7 @@ const ProfileSidebar = ({ session }: { session: any }) => {
         error,
         data: user,
     } = useQuery({
-        queryKey: ["profile-sidebar-user-information"],
+        queryKey: ["profile-sidebar-user-information", session.user.email],
         queryFn: async () => await getCurrentUser(session.user.email),
     });
 
@@ -26,6 +26,10 @@ const ProfileSidebar = ({ session }: { session: any }) => {
     // * If there was an error, show the error message
     if (error) {
         return <div>{error.message}</div>;
+    }
+
+    if (!user) {
+        return <div>Something went wrong...</div>;
     }
 
     // * Calculate the users age
