@@ -15,3 +15,9 @@ export const getResourcesBySlug = async (
 
     return { resources, resourceCategory };
 };
+
+export const getAllResources = async () => {
+    const response = await fetch(`http://localhost:8080/api/resources/all`);
+
+    return response.json();
+};

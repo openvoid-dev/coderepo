@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import * as z from "zod"
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
 
-import { Button, buttonVariants } from "@/components/ui/button"
+import { Button, buttonVariants } from "@/components/ui/button";
 import {
     Form,
     FormControl,
@@ -13,14 +13,14 @@ import {
     FormItem,
     FormLabel,
     FormMessage,
-} from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
-import { signIn } from "next-auth/react"
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { signIn } from "next-auth/react";
 
-import { useRouter } from 'next/navigation';
-import signUp from "@/lib/auth"
-import Link from "next/link"
-import { cn } from "@/lib/utils"
+import { useRouter } from "next/navigation";
+import signUp from "@/lib/auth";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 const signUpSchema = z.object({
     email: z.string().email({
@@ -32,7 +32,7 @@ const signUpSchema = z.object({
     password: z.string().min(8, {
         message: "Password must be at least 8 characters.",
     }),
-})
+});
 
 const SignUpForm = () => {
     const router = useRouter();
@@ -44,7 +44,7 @@ const SignUpForm = () => {
             password: "",
             username: "",
         },
-    })
+    });
 
     const onSubmit = async (data: z.infer<typeof signUpSchema>, event: any) => {
         event.preventDefault();
@@ -53,29 +53,24 @@ const SignUpForm = () => {
             // * Create the user
             const response = await signUp(data);
 
-            console.log(response);
-
             // if (!response.ok) {
             //     throw new Error(await response.text())
             // }
-
-            console.log("signup response", response)
 
             // * Sign in the user
             const signInResponse = await signIn("credentials", {
                 redirect: false,
                 email: data.email,
                 password: data.password,
-            })
+            });
 
             if (signInResponse?.error) {
-                throw new Error(signInResponse.error)
+                throw new Error(signInResponse.error);
             }
 
             // * Redirect to profile page
-            router.push('/profile');
+            router.push("/profile");
             router.refresh();
-
         } catch (error: any) {
             console.error("Authentication error:", error.message);
         }
@@ -83,7 +78,11 @@ const SignUpForm = () => {
 
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4" autoComplete="off">
+            <form
+                onSubmit={form.handleSubmit(onSubmit)}
+                className="space-y-4"
+                autoComplete="off"
+            >
                 <FormField
                     control={form.control}
                     name="email"
@@ -91,7 +90,10 @@ const SignUpForm = () => {
                         <FormItem>
                             <FormLabel>Email</FormLabel>
                             <FormControl>
-                                <Input placeholder="coderepo@obradovic.dev" {...field} />
+                                <Input
+                                    placeholder="coderepo@obradovic.dev"
+                                    {...field}
+                                />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
@@ -117,24 +119,36 @@ const SignUpForm = () => {
                         <FormItem>
                             <FormLabel>Password</FormLabel>
                             <FormControl>
-                                <Input placeholder="********" type="password" {...field} />
+                                <Input
+                                    placeholder="********"
+                                    type="password"
+                                    {...field}
+                                />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
                     )}
                 />
                 <FormDescription />
-                <Button type="submit" className="w-full" variant="secondary">Sign Up</Button>
+                <Button type="submit" className="w-full" variant="secondary">
+                    Sign Up
+                </Button>
 
                 <FormDescription className="text-center">
                     Already have an account?{" "}
-                    <Link href="/signin" className={cn(buttonVariants({ variant: "link" }), "p-0")}>
+                    <Link
+                        href="/signin"
+                        className={cn(
+                            buttonVariants({ variant: "link" }),
+                            "p-0"
+                        )}
+                    >
                         Sign in
                     </Link>
                 </FormDescription>
             </form>
         </Form>
-    )
-}
+    );
+};
 
-export default SignUpForm
+export default SignUpForm;
