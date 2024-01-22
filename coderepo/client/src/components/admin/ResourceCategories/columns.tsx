@@ -12,6 +12,7 @@ import {
 import { ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown, MoreHorizontal } from "lucide-react";
 import { ResourceCategory } from "@/types/resources";
+import Link from "next/link";
 
 export const columns: ColumnDef<ResourceCategory>[] = [
     {
@@ -107,7 +108,9 @@ export const columns: ColumnDef<ResourceCategory>[] = [
                             View resource category
                         </DropdownMenuItem>
                         <DropdownMenuItem>
-                            Edit resource category
+                            <Link href={`/profile/admin/resources/categories/edit/${resourceCategory.slug}`}>
+                                Edit resource category
+                            </Link>
                         </DropdownMenuItem>
                     </DropdownMenuContent>
                 </DropdownMenu>

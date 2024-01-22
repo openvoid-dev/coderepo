@@ -1,11 +1,4 @@
-import jwt from "jsonwebtoken";
-
-const generateToken = (userEmail: string): string => {
-    const secretKey = "your-secret-key"; // Replace with your actual secret key
-    const token = jwt.sign({ userEmail }, secretKey, { expiresIn: "1h" });
-
-    return token;
-};
+import { generateToken } from "@/utils/jwt";
 
 export const getCurrentUser = async (userEmail: string) => {
     try {

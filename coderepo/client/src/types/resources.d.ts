@@ -17,3 +17,10 @@ export interface ResourcesBySlugResult {
     resourceCategory: ResourceCategory;
     resources: Resource[];
 }
+
+export interface ResourceCategoryAddNew {
+    name: string;
+    // slug: string;
+    description: string;
+    icon: string;
+}

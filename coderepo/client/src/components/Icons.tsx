@@ -10,6 +10,9 @@ import {
     Newspaper,
     Code2Icon,
     LogOut,
+    FlipHorizontal2,
+    AppleIcon,
+    PaletteIcon
 } from "lucide-react";
 
 export const Icons: Record<string, LucideIcon> = {
@@ -24,4 +27,8 @@ export const Icons: Record<string, LucideIcon> = {
     resource: Code2Icon,
     logout: LogOut,
     usefulBlogs: Newspaper,
+    icons: FlipHorizontal2,
+    apple: AppleIcon,
+    uiComponents: LayoutTemplate,
+    colors: PaletteIcon
 };
