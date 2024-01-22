@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"server/database"
 	"server/models"
+	"server/utils"
 
 	"github.com/gofiber/fiber/v2"
 )
@@ -59,7 +60,7 @@ func GetAllResourceCategories(c *fiber.Ctx) error {
 	return c.Status(fiber.StatusAccepted).JSON(resourceCategoriesResponse)
 }
 
-func GetResourceCategoryBySlug(c *fiber.Ctx) error {
+func GetResourceByCategorySlug(c *fiber.Ctx) error {
 	// * Parse the slug from the URL paramater
 	resourceCategorySlug := c.Params("slug")
 
@@ -115,4 +116,54 @@ func GetAllResources(c *fiber.Ctx) error {
 	// * Return the resources as JSON
 	fmt.Println("Get all resources")
 	return c.Status(fiber.StatusAccepted).JSON(resourcesResponse)
+}
+
+func GetResourceCategoryBySlug(c *fiber.Ctx) error {
+	// * Parse the slug from the URL paramater
+	resourceCategorySlug := c.Params("slug")
+
+	// * Retrieve the resource category from the database
+	var resourceCategory models.ResourceCategory
+	if err := database.Database.Db.Where("slug = ?", resourceCategorySlug).First(&resourceCategory).Error; err != nil {
+		return c.Status(fiber.StatusNotFound).JSON(fiber.Map{"error": "Resource category not found"})
+	}
+
+	// * Create the response structure
+	resourceCategoryResponse := ResourceCategoryResponse{
+		ID:          resourceCategory.ID,
+		Name:        resourceCategory.Name,
+		Slug:        resourceCategory.Slug,
+		Description: resourceCategory.Description,
+		Icon:        resourceCategory.Icon,
+	}
+
+	// * Return the resource category as JSON
+	return c.Status(fiber.StatusAccepted).JSON(resourceCategoryResponse)
+}
+
+func CreateResourceCategory(c *fiber.Ctx) error {
+	// * Parse the request body
+	type Request struct {
+		Name        string `json:"name"`
+		Description string `json:"description"`
+		Icon        string `json:"icon"`
+	}
+	var body Request
+	if err := c.BodyParser(&body); err != nil {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{"error": "Error parsing request body"})
+	}
+
+	// * Create the resource category
+	resourceCategory := models.ResourceCategory{
+		Name:        body.Name,
+		Slug:        utils.CreateSlug(body.Name),
+		Description: body.Description,
+		Icon:        body.Icon,
+	}
+	if err := database.Database.Db.Create(&resourceCategory).Error; err != nil {
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{"error": "Error creating resource category"})
+	}
+
+	// * Return the resource category as JSON
+	return c.Status(fiber.StatusCreated).JSON(resourceCategory)
 }
