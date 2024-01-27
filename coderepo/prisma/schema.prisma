@@ -26,6 +26,34 @@ datasource db {
 //     @@index([name])
 // }
 
+model ResourceCategory {
+    id          Int      @id @default(autoincrement())
+    name        String   @unique
+    description String
+    icon        String
+    slug        String   @unique
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+
+    resources Resource[]
+
+    @@index([name])
+}
+
+model Resource {
+    id          Int      @id @default(autoincrement())
+    name        String
+    description String
+    url         String
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+
+    categoryId Int
+    category   ResourceCategory @relation(fields: [categoryId], references: [id])
+
+    @@index([name])
+}
+
 // Necessary for Next auth
 model Account {
     id                       String  @id @default(cuid())
@@ -62,7 +90,6 @@ model User {
     image         String?
     accounts      Account[]
     sessions      Session[]
-    // posts         Post[]
 }
 
 model VerificationToken {

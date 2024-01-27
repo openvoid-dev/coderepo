@@ -1,84 +1,75 @@
 import { unstable_noStore as noStore } from "next/cache";
 import Link from "next/link";
-
-// import { CreatePost } from "~/app/_components/create-post";
-import { getServerAuthSession } from "~/server/auth";
-// import { api } from "~/trpc/server";
+import { Icons } from "~/components/Icons";
+import TemplateCard from "~/components/TemplateCard";
+import { buttonVariants } from "~/components/ui/button";
+import { cn } from "~/lib/utils";
 
 export default async function Home() {
   noStore();
-  // const hello = await api.pst.hello.query({ text: "froom tRPC" });
-  const session = await getServerAuthSession();
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
-      <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
-        <h1 className="text-5xl font-extrabold tracking-tight sm:text-[5rem]">
-          Create <span className="text-[hsl(280,100%,70%)]">T3</span> App
-        </h1>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8">
-          <Link
-            className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
-            href="https://create.t3.gg/en/usage/first-steps"
-            target="_blank"
+    <main className="">
+      {/* Hero */}
+      <section className="pb-8 pt-6 md:pb-12 md:pt-10 lg:py-32 h-screen">
+        <div className="container flex flex-col items-center gap-6 relative isolate">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
           >
-            <h3 className="text-2xl font-bold">First Steps →</h3>
-            <div className="text-lg">
-              Just the basics - Everything you need to know to set up your
-              database and authentication.
-            </div>
-          </Link>
-          <Link
-            className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
-            href="https://create.t3.gg/en/introduction"
-            target="_blank"
-          >
-            <h3 className="text-2xl font-bold">Documentation →</h3>
-            <div className="text-lg">
-              Learn more about Create T3 App, the libraries it uses, and how to
-              deploy it.
-            </div>
-          </Link>
-        </div>
-        <div className="flex flex-col items-center gap-2">
-          <p className="text-2xl text-white">
-            {/* {hello ? hello.greeting : "Loading tRPC query..."} */}
-          </p>
+            <div
+              className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-green-500 to-purple-500 opacity-30 sm:left-[calc(50%-10rem)] sm:w-[82.1875rem]"
+              style={{
+                clipPath:
+                  "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
+              }}
+            />
+          </div>
 
-          <div className="flex flex-col items-center justify-center gap-4">
-            <p className="text-center text-2xl text-white">
-              {session && <span>Logged in as {session.user?.name}</span>}
-            </p>
+          <Link href="/templates" className="flex items-center gap-2 bg-green-900/10 text-green-100 rounded-full px-4 py-2 border border-green-700/75 font-semibold font-heading">Checkout new starter templates. <Icons.arrowRight className="w-5 h-5 font-semibold" /></Link>
+
+          <h1 className="font-bold font-heading text-center text-4xl md:text-5xl lg:text-6xl xl:text-7xl pt-4 pb-2 overflow-hidden">
+            Code Repo: Exploring Web Technologies and Documentation
+          </h1>
+          <p className="max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8 text-center">
+            A Comprehensive Repository of Web Technology Examples and
+            Documentation for Developers
+          </p>
+          <div className="space-x-4 inline-flex items-center">
             <Link
-              href={session ? "/api/auth/signout" : "/api/auth/signin"}
-              className="rounded-full bg-white/10 px-10 py-3 font-semibold no-underline transition hover:bg-white/20"
+              href="/templates"
+              className={cn(buttonVariants({ size: "lg", variant: "default" }))}
             >
-              {session ? "Sign out" : "Sign in"}
+              Templates
+            </Link>
+            <Link
+              href="https://github.com/AntonioObra/coderepo" target="_blank"
+              rel="noreferrer"
+              className={cn(buttonVariants({ variant: "secondary", size: "lg" }))}
+            >
+              <Icons.gitHub className="w-5 h-5 mr-2" />
+              GitHub
             </Link>
           </div>
         </div>
+      </section>
 
-        {/* <CrudShowcase /> */}
-      </div>
+      {/* Templates */}
+      <section className="container">
+        <hgroup className='flex flex-col items-center gap-2'>
+          <h1 className='font-bold font-heading text-center text-3xl md:text-4xl lg:text-6xl pt-4 pb-2'>Inspiring Templates to Use</h1>
+          <p className="max-w-[65rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8 text-center">
+            Exploring the Possibilities of Cutting-Edge Web Development Technologies: Showcasing Innovative and Inspiring Projects
+          </p>
+        </hgroup>
+
+        <div className='grid grid-cols-2 gap-6 mt-10'>
+          <TemplateCard />
+          <TemplateCard />
+          <TemplateCard />
+          <TemplateCard />
+        </div>
+      </section>
     </main>
   );
 }
-
-// async function CrudShowcase() {
-//   const session = await getServerAuthSession();
-//   if (!session?.user) return null;
-
-//   // const latestPost = await api.post.getLatest.query();
-
-//   return (
-//     <div className="w-full max-w-xs">
-//       {latestPost ? (
-//         <p className="truncate">Your most recent post: {latestPost.name}</p>
-//       ) : (
-//         <p>You have no posts yet.</p>
-//       )}
-
-//       <CreatePost />
-//     </div>
-//   );
-// }
