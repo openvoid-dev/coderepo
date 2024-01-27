@@ -248,4 +248,36 @@ export const resourceRouter = createTRPCRouter({
 
       return resourceCategory;
     }),
+
+  deleteResource: protectedProcedure
+    .input(z.object({ id: z.number() }))
+    .mutation(async ({ ctx, input }) => {
+      const resource = await ctx.db.resource.delete({
+        where: {
+          id: input.id,
+        },
+      });
+
+      if (!resource) {
+        throw new Error("Resource not deleted");
+      }
+
+      return resource;
+    }),
+
+  deleteResourceCategory: protectedProcedure
+    .input(z.object({ id: z.number() }))
+    .mutation(async ({ ctx, input }) => {
+      const resourceCategory = await ctx.db.resourceCategory.delete({
+        where: {
+          id: input.id,
+        },
+      });
+
+      if (!resourceCategory) {
+        throw new Error("Resource category not deleted");
+      }
+
+      return resourceCategory;
+    }),
 });
