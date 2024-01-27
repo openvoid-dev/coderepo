@@ -24,7 +24,11 @@ import {
     MonitorStop,
     Image,
     Apple,
-    type LucideProps
+    type LucideProps,
+    Pencil,
+    Eraser,
+    Undo2,
+    Plus
 } from "lucide-react";
 import { twMerge } from "tailwind-merge";
 
@@ -57,6 +61,10 @@ export const Icons = {
     mockups: MonitorStop,
     image: Image,
     courses: Apple,
+    update: Pencil,
+    delete: Eraser,
+    back: Undo2,
+    create: Plus,
     gitHub: ({ className, ...props }: LucideProps) => (
         <svg
             aria-hidden="true"

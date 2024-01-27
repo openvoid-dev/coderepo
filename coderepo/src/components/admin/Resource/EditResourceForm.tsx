@@ -6,6 +6,7 @@ import { type BaseSyntheticEvent } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
+import { Icons } from "~/components/Icons";
 import { Button } from "~/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "~/components/ui/form";
 import { Input } from "~/components/ui/input";
@@ -69,14 +70,29 @@ const EditResourceForm = ({ resourceCategories, resource }: EditResourceFormProp
         },
     })
 
+    const deleteResource = api.resource.deleteResource.useMutation({
+        onSuccess: () => {
+            router.push("/profile/admin/resources");
+            toast("Resource deleted successfully");
+        },
+        onError: (error) => {
+            toast(error.message);
+        },
+    })
+
     const onSubmit = (data: FormFields, event: BaseSyntheticEvent | undefined) => {
         event?.preventDefault();
         updateResource.mutate({ ...data, categoryId: parseInt(data.categoryId), id: resource.id });
     }
 
+    const handleDeleteResource = (event: BaseSyntheticEvent | undefined) => {
+        event?.preventDefault();
+        deleteResource.mutate({ id: resource.id });
+    }
+
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="grid grid-cols-2 gap-6">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="grid grid-cols-3 gap-6">
                 <FormField
                     control={form.control}
                     name="name"
@@ -105,19 +121,7 @@ const EditResourceForm = ({ resourceCategories, resource }: EditResourceFormProp
                     )}
                 />
 
-                <FormField
-                    control={form.control}
-                    name="description"
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>Description</FormLabel>
-                            <FormControl>
-                                <Textarea {...field} />
-                            </FormControl>
-                            <FormMessage />
-                        </FormItem>
-                    )}
-                />
+
 
                 <FormField
                     control={form.control}
@@ -142,7 +146,26 @@ const EditResourceForm = ({ resourceCategories, resource }: EditResourceFormProp
                     )}
                 />
 
-                <Button type="submit" className="col-span-2">Update Resource</Button>
+                <div className="col-span-full">
+                    <FormField
+                        control={form.control}
+                        name="description"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Description</FormLabel>
+                                <FormControl>
+                                    <Textarea {...field} />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                </div>
+
+                <div className="col-span-full flex gap-6 justify-end">
+                    <Button type="button" variant="destructive" onClick={handleDeleteResource}><Icons.delete className="w-4 h-4 mr-2" />Delete Resource</Button>
+                    <Button type="submit" className="col-span-2"><Icons.update className="w-4 h-4 mr-2" /> Update Resource </Button>
+                </div>
             </form>
         </Form>
     )

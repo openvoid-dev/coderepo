@@ -61,16 +61,31 @@ const EditResourceCategoryForm = ({ resourceCategory }: EditResourceFormProps) =
         },
     })
 
+    const deleteResourceCategory = api.resource.deleteResourceCategory.useMutation({
+        onSuccess: () => {
+            router.push("/profile/admin/resources");
+            toast("Resource Category deleted successfully");
+        },
+        onError: (error) => {
+            toast(error.message);
+        },
+    })
+
     const onSubmit = (data: FormFields, event: BaseSyntheticEvent | undefined) => {
         event?.preventDefault();
         updateResourceCategory.mutate({ ...data, id: resourceCategory.id });
+    }
+
+    const handleDeleteResourceCategory = (event: BaseSyntheticEvent | undefined) => {
+        event?.preventDefault();
+        deleteResourceCategory.mutate({ id: resourceCategory.id });
     }
 
     const allIcons = Object.keys(Icons);
 
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="grid grid-cols-2 gap-6">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="grid grid-cols-3 gap-6">
                 <FormField
                     control={form.control}
                     name="name"
@@ -93,20 +108,6 @@ const EditResourceCategoryForm = ({ resourceCategory }: EditResourceFormProps) =
                             <FormLabel>Slug</FormLabel>
                             <FormControl>
                                 <Input {...field} />
-                            </FormControl>
-                            <FormMessage />
-                        </FormItem>
-                    )}
-                />
-
-                <FormField
-                    control={form.control}
-                    name="description"
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>Description</FormLabel>
-                            <FormControl>
-                                <Textarea {...field} />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
@@ -145,7 +146,26 @@ const EditResourceCategoryForm = ({ resourceCategory }: EditResourceFormProps) =
                     )}
                 />
 
-                <Button type="submit" className="col-span-2">Update Resource Category</Button>
+                <div className="col-span-full">
+                    <FormField
+                        control={form.control}
+                        name="description"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Description</FormLabel>
+                                <FormControl>
+                                    <Textarea {...field} />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                </div>
+
+                <div className="col-span-full flex gap-6 justify-end">
+                    <Button type="button" variant="destructive" onClick={handleDeleteResourceCategory}><Icons.delete className="w-4 h-4 mr-2" />Delete Resource Category</Button>
+                    <Button type="submit" className="col-span-2"><Icons.update className="w-4 h-4 mr-2" /> Update Resource Category</Button>
+                </div>
             </form>
         </Form>
     )

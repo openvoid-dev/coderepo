@@ -103,21 +103,24 @@ const AddResourceCategoryForm = () => {
                     )}
                 />
 
-                <FormField
-                    control={form.control}
-                    name="description"
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>Description</FormLabel>
-                            <FormControl>
-                                <Textarea {...field} />
-                            </FormControl>
-                            <FormMessage />
-                        </FormItem>
-                    )}
-                />
-
-                <Button type="submit" className="col-span-2">Add Resource</Button>
+                <div className="col-span-full">
+                    <FormField
+                        control={form.control}
+                        name="description"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Description</FormLabel>
+                                <FormControl>
+                                    <Textarea {...field} />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                </div>
+                <div className="col-span-full flex gap-6 justify-end">
+                    <Button type="submit"><Icons.create className="w-4 h-4 mr-2" />Create Resource Category</Button>
+                </div>
             </form>
         </Form>
     )
