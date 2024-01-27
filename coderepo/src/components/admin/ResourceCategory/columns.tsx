@@ -119,7 +119,7 @@ export const resourceCategoryColumns: ColumnDef<ResourceCategoryColumn>[] = [
                             </Link>
                         </DropdownMenuItem>
                         <DropdownMenuItem>
-                            <Link href={`/profile/admin/resources/categories/edit/${resourceCategory.slug}`}>
+                            <Link href={`/profile/admin/resources/categories/edit/${resourceCategory.id}`}>
                                 Edit resource category
                             </Link>
                         </DropdownMenuItem>

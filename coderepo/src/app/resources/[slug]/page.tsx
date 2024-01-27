@@ -1,4 +1,3 @@
-import { unstable_noStore as noStore } from "next/cache";
 import PageHeader from "~/components/PageHeader";
 import ResourceCard from "~/components/ResourceCard";
 import { api } from "~/trpc/server";
@@ -8,7 +7,6 @@ export default async function ResourcesByCategoryPage({
 }: {
     params: { slug: string };
 }) {
-    // noStore(); // Prevents the page from being pre-rendered
     const { resources, category } = await api.resource.getResourcesForCategory.query({ slug: params.slug })
 
     return (
