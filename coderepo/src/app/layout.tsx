@@ -6,6 +6,7 @@ import { TRPCReactProvider } from "~/trpc/react";
 import { ThemeProvider } from "~/components/ThemeProvider";
 import { cn } from "~/lib/utils";
 import Navbar from "~/components/Navbar";
+import { Toaster } from "~/components/ui/sonner";
 
 // Fonts
 const poppins = Poppins({
@@ -43,6 +44,7 @@ export default function RootLayout({
             <Navbar />
             {children}
           </TRPCReactProvider>
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>

@@ -5,6 +5,11 @@ generator client {
     provider = "prisma-client-js"
 }
 
+enum Role {
+    USER
+    ADMIN
+}
+
 datasource db {
     provider = "postgresql"
     // NOTE: When using mysql or sqlserver, uncomment the @db.Text annotations in model Account below
@@ -90,6 +95,8 @@ model User {
     image         String?
     accounts      Account[]
     sessions      Session[]
+
+    role Role @default(USER)
 }
 
 model VerificationToken {
