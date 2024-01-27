@@ -11,6 +11,7 @@ export const resourceRouter = createTRPCRouter({
     const resourceCategories = await ctx.db.resourceCategory.findMany({
       orderBy: { name: "asc" },
       select: {
+        id: true,
         name: true,
         description: true,
         icon: true,
@@ -56,5 +57,55 @@ export const resourceRouter = createTRPCRouter({
       }
 
       return { category, resources };
+    }),
+
+  getResources: publicProcedure.query(async ({ ctx }) => {
+    const resources = await ctx.db.resource.findMany({
+      select: {
+        id: true,
+        name: true,
+        description: true,
+        url: true,
+        category: {
+          select: {
+            name: true,
+            id: true,
+            slug: true,
+          },
+        },
+      },
+    });
+
+    if (!resources) {
+      throw new Error("No resources found");
+    }
+
+    return resources;
+  }),
+
+  createResource: protectedProcedure
+    .input(
+      z.object({
+        name: z.string(),
+        description: z.string(),
+        url: z.string(),
+        categoryId: z.number(),
+      }),
+    )
+    .mutation(async ({ ctx, input }) => {
+      const resource = await ctx.db.resource.create({
+        data: {
+          name: input.name,
+          description: input.description,
+          url: input.url,
+          categoryId: input.categoryId,
+        },
+      });
+
+      if (!resource) {
+        throw new Error("Resource not created");
+      }
+
+      return resource;
     }),
 });
