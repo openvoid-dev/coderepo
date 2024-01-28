@@ -43,7 +43,7 @@ export default async function ProfileLayout({
                         <Icons.profile className="w-5 h-5 mr-3" /> Profile
                     </Link>
                     <Link
-                        href="/profile/templates"
+                        href="/profile/my-templates"
                         className={cn(
                             buttonVariants({ variant: "outline", size: "lg" }),
                             "flex  justify-start"
@@ -52,7 +52,7 @@ export default async function ProfileLayout({
                         <Icons.template className="w-5 h-5 mr-3" /> My Templates
                     </Link>
                     <Link
-                        href="/profile/guides"
+                        href="/profile/my-guides"
                         className={cn(
                             buttonVariants({ variant: "outline", size: "lg" }),
                             "flex  justify-start"
@@ -61,7 +61,7 @@ export default async function ProfileLayout({
                         <Icons.guide className="w-5 h-5 mr-3" /> My Guides
                     </Link>
                     <Link
-                        href="/profile/resources"
+                        href="/profile/my-resources"
                         className={cn(
                             buttonVariants({ variant: "outline", size: "lg" }),
                             "flex  justify-start"

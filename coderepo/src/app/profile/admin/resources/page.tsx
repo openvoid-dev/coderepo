@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Icons } from "~/components/Icons";
 import { resourceColumns } from "~/components/admin/Resource/columns";
 import { ResourceDataTable } from "~/components/admin/Resource/data-table";
 import { resourceCategoryColumns } from "~/components/admin/ResourceCategory/columns";
@@ -21,7 +22,7 @@ export default async function AdminResourcesPage() {
                     </h2>
 
                     <Link href="/profile/admin/resources/categories/add" className={cn(buttonVariants({ variant: "link" }))}>
-                        Add Resource Category
+                        <Icons.create className="w-5 h-5 mr-2" /> Add Resource Category
                     </Link>
                 </div>
                 <ResourceCategoryDataTable columns={resourceCategoryColumns} data={allResourceCategories} />
@@ -35,7 +36,7 @@ export default async function AdminResourcesPage() {
                     </h2>
 
                     <Link href="/profile/admin/resources/add" className={cn(buttonVariants({ variant: "link" }))}>
-                        Add Resource
+                        <Icons.create className="w-5 h-5 mr-2" /> Add Resource
                     </Link>
                 </div>
 

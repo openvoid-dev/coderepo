@@ -1,5 +1,5 @@
-import PageHeader from "~/components/PageHeader";
-import ResourceCard from "~/components/ResourceCard";
+import ResourcesByCategoryPageClient from "~/app/resources/[slug]/client";
+import Hydrate from "~/trpc/hydrate-client";
 import { api } from "~/trpc/server";
 
 export default async function ResourcesByCategoryPage({
@@ -7,20 +7,15 @@ export default async function ResourcesByCategoryPage({
 }: {
     params: { slug: string };
 }) {
-    const { resources, category } = await api.resource.getResourcesForCategory.query({ slug: params.slug })
+    await api.resource.getResourcesForCategory.query({ slug: params.slug });
+
+    // TODO: Add Prerendering for this page
 
     return (
         <main className="pb-8 pt-6 md:pb-12 md:pt-10 lg:py-16">
-            <PageHeader
-                heading={category.name}
-                text={category.description}
-            />
-
-            <section className="container grid grid-cols-1 md:grid-cols-4 mt-20 gap-6">
-                {resources.map((resource, index) => (
-                    <ResourceCard key={resource.name + index} {...resource} />
-                ))}
-            </section>
+            <Hydrate>
+                <ResourcesByCategoryPageClient slug={params.slug} />
+            </Hydrate>
         </main>
     )
 }

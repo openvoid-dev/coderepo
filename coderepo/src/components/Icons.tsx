@@ -28,7 +28,9 @@ import {
     Pencil,
     Eraser,
     Undo2,
-    Plus
+    Plus,
+    Star,
+    Copy
 } from "lucide-react";
 import { twMerge } from "tailwind-merge";
 
@@ -65,6 +67,8 @@ export const Icons = {
     delete: Eraser,
     back: Undo2,
     create: Plus,
+    star: Star,
+    copy: Copy,
     gitHub: ({ className, ...props }: LucideProps) => (
         <svg
             aria-hidden="true"
