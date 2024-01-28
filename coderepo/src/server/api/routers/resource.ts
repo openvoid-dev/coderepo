@@ -48,9 +48,15 @@ export const resourceRouter = createTRPCRouter({
           },
         },
         select: {
+          id: true,
           name: true,
           description: true,
           url: true,
+          myResources: ctx.session?.user ? {
+            where: {
+              userId: ctx.session?.user.id,
+            }
+          } : false,
         },
       });
 
