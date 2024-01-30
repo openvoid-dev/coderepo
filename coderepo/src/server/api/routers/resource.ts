@@ -35,6 +35,11 @@ export const resourceRouter = createTRPCRouter({
         where: {
           slug: input.slug,
         },
+        select: {
+          id: true,
+          name: true,
+          description: true,
+        },
       });
 
       if (!category) {
@@ -52,11 +57,13 @@ export const resourceRouter = createTRPCRouter({
           name: true,
           description: true,
           url: true,
-          myResources: ctx.session?.user ? {
-            where: {
-              userId: ctx.session?.user.id,
-            }
-          } : false,
+          myResources: ctx.session?.user
+            ? {
+                where: {
+                  userId: ctx.session?.user.id,
+                },
+              }
+            : false,
         },
       });
 
