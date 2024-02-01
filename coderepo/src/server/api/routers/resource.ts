@@ -7,6 +7,7 @@ import {
 } from "~/server/api/trpc";
 
 import slugify from "slugify";
+import { TRPCError } from "@trpc/server";
 
 export const resourceRouter = createTRPCRouter({
   getResourceCategories: publicProcedure.query(async ({ ctx }) => {
@@ -43,7 +44,7 @@ export const resourceRouter = createTRPCRouter({
       });
 
       if (!category) {
-        throw new Error("No category found");
+        return { category: null, resources: [] };
       }
 
       const resources = await ctx.db.resource.findMany({
@@ -68,7 +69,7 @@ export const resourceRouter = createTRPCRouter({
       });
 
       if (!resources) {
-        throw new Error("No resources found");
+        return { category, resources: [] };
       }
 
       return { category, resources };
