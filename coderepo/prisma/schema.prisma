@@ -31,6 +31,32 @@ datasource db {
 //     @@index([name])
 // }
 
+model Template {
+    id          Int      @id @default(autoincrement())
+    name        String   @unique
+    description String
+    slug        String   @unique
+    githubUrl   String
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+
+    pages TemplatePage[]
+}
+
+model TemplatePage {
+    id        Int      @id @default(autoincrement())
+    name      String
+    slug      String   @unique
+    content   String
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    templateId Int
+    template   Template @relation(fields: [templateId], references: [id])
+
+    @@index([name])
+}
+
 model ResourceCategory {
     id          Int      @id @default(autoincrement())
     name        String   @unique
