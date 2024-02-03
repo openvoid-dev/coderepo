@@ -37,7 +37,7 @@ const PageHeader = ({
             </h1>
 
             {text && (
-                <p className="max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8 text-center">
+                <p className="max-w-[62rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8 text-center">
                     {text}
                 </p>
             )}
