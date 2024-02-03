@@ -7,7 +7,7 @@ export default async function ResourcesByCategoryPage({
 }: {
   params: { slug: string };
 }) {
-  const { category } = await api.resource.getResourcesForCategory.query({
+  const { category, resources } = await api.resource.getResourcesForCategory.query({
     slug: params.slug,
   });
 
@@ -15,10 +15,9 @@ export default async function ResourcesByCategoryPage({
     notFound();
   }
 
-  // TODO: Add Prerendering for this page
   return (
     <main className="pb-8 pt-6 md:pb-12 md:pt-10 lg:py-16">
-      <ResourcesByCategoryPageClient slug={params.slug} category={category} />
+      <ResourcesByCategoryPageClient slug={params.slug} category={category} initialResourcesData={{ resources, category }} />
     </main>
   );
 }

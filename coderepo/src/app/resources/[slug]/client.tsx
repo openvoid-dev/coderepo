@@ -8,6 +8,7 @@ import ResourceCard from "~/components/ResourceCard";
 import { buttonVariants } from "~/components/ui/button";
 import { cn } from "~/lib/utils";
 import { api } from "~/trpc/react";
+import { type api as serverClient } from "~/trpc/server";
 
 interface ResourcesByCategoryPageClientProps {
   slug: string;
@@ -16,14 +17,19 @@ interface ResourcesByCategoryPageClientProps {
     name: string;
     description: string;
   };
+  initialResourcesData: Awaited<ReturnType<(typeof serverClient.resource.getResourcesForCategory.query)>>;
 }
 
 export default function ResourcesByCategoryPageClient({
   slug,
   category,
+  initialResourcesData
 }: ResourcesByCategoryPageClientProps) {
   const { data, isLoading } = api.resource.getResourcesForCategory.useQuery({
     slug: slug,
+  }, {
+    initialData: initialResourcesData,
+    refetchOnMount: false,
   });
 
   return (
