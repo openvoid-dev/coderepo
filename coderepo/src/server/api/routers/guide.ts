@@ -57,6 +57,7 @@ export const guideRouter = createTRPCRouter({
           select: {
             id: true,
             name: true,
+            icon: true,
           },
         },
         description: true,
@@ -66,4 +67,30 @@ export const guideRouter = createTRPCRouter({
 
     return guides;
   }),
+
+  getGuideBySlug: publicProcedure
+    .input(z.object({ slug: z.string() }))
+    .query(async ({ ctx, input }) => {
+      const guide = await ctx.db.guide.findUnique({
+        where: {
+          slug: input.slug,
+        },
+        select: {
+          id: true,
+          name: true,
+          imageUrl: true,
+          tag: {
+            select: {
+              id: true,
+              name: true,
+              icon: true,
+            },
+          },
+          description: true,
+          content: true,
+        },
+      });
+
+      return guide;
+    }),
 });
