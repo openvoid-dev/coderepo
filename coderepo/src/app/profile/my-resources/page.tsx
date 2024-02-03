@@ -1,12 +1,8 @@
-"use client";
+import MyResourcesProfilePageClient from "~/app/profile/my-resources/client";
+import { api } from "~/trpc/server";
 
-import Loader from "~/components/Loader";
-import ResourceCard from "~/components/ResourceCard";
-import { api } from "~/trpc/react";
-
-export default function MyResourcesProfilePage() {
-  const { data: savedResources, isLoading } =
-    api.user.getSavedResources.useQuery();
+export default async function MyResourcesProfilePage() {
+  const initialResourcesData = await api.user.getSavedResources.query();
 
   return (
     <main className="rounded-lg bg-secondary/20 px-8 py-10">
@@ -14,18 +10,7 @@ export default function MyResourcesProfilePage() {
         <h1 className="text-2xl font-semibold">My Resources</h1>
       </div>
 
-      {isLoading && <Loader className="my-6" />}
-      {savedResources?.length === 0 && (
-        <p className="text-xl text-muted-foreground">
-          You haven&apos;t saved any resources yet.
-        </p>
-      )}
-
-      <div className="grid grid-cols-3 gap-6">
-        {savedResources?.map((resource) => (
-          <ResourceCard key={resource.name} {...resource} isSaved={true} />
-        ))}
-      </div>
+      <MyResourcesProfilePageClient initialResourcesData={initialResourcesData} />
     </main>
   );
 }
