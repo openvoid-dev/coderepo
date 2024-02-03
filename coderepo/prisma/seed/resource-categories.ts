@@ -3,6 +3,13 @@
 // async function main() {
 //   await db.resourceCategory.createMany({
 //     data: [
+// {
+//     name: "Courses",
+//     description:
+//       "Courses are a great way to learn new skills and improve your knowledge in a particular area. They are often taught by experts in the field and can be taken at your own pace.",
+//     icon: "apple",
+//     slug: "courses",
+//   },
 //       {
 //         name: "Web Development",
 //         description:
