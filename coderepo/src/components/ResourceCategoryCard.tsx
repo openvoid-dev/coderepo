@@ -28,7 +28,7 @@ const ResourceCategoryCard = ({
                     <h1 className="text-2xl font-semibold text-foreground font-heading dark:text-primary-light mb-2 text-left">
                         {name}
                     </h1>
-                    <p className="text-md text-muted-foreground dark:text-muted-light text-left">
+                    <p className="text-md text-muted-foreground dark:text-muted-light text-left line-clamp-3">
                         {description}
                     </p>
                 </hgroup>

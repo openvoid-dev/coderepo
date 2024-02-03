@@ -64,10 +64,10 @@ export default async function Home() {
         </hgroup>
 
         <div className='grid grid-cols-2 gap-6 mt-10'>
+          {/* <TemplateCard />
           <TemplateCard />
           <TemplateCard />
-          <TemplateCard />
-          <TemplateCard />
+          <TemplateCard /> */}
         </div>
       </section>
     </main>
