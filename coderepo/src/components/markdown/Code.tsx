@@ -4,6 +4,7 @@ import { materialOceanic } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 export const CodeBlock = ({ ...props }) => {
     return (
         <SyntaxHighlighter
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
             language={props.className?.replace(/(?:lang(?:uage)?-)/, '')}
             style={materialOceanic}
             wrapLines={true}

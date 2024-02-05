@@ -75,7 +75,6 @@ const AddGuideForm = ({ guideTags }: AddGuideFormProps) => {
 
     const onSubmit = (data: FormFields, event: BaseSyntheticEvent | undefined) => {
         event?.preventDefault();
-        console.log(data)
         createGuide.mutate({ ...data, tagId: parseInt(data.tagId) });
     }
 
