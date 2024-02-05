@@ -4,6 +4,7 @@ import {
   type DefaultSession,
   type NextAuthOptions,
 } from "next-auth";
+import { type AdapterUser } from "next-auth/adapters";
 import GitHubProvider from "next-auth/providers/github";
 
 import { env } from "~/env";
@@ -19,14 +20,9 @@ declare module "next-auth" {
   interface Session extends DefaultSession {
     user: {
       id: string;
-      role: "ADMIN" | "USER" | null | undefined;
+      role: "ADMIN" | "USER";
     } & DefaultSession["user"];
   }
-
-  // interface User {
-  //   // ...other properties
-  //   // role: UserRole;
-  // }
 }
 
 /**
