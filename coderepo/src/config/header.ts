@@ -17,8 +17,8 @@ export const HeaderLinks: Link[] = [
     name: "Resources",
     path: "/resources",
   },
-  {
-    name: "Playground",
-    path: "/playground",
-  },
+  // {
+  //   name: "Playground",
+  //   path: "/playground",
+  // },
 ];

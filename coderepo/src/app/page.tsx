@@ -37,10 +37,10 @@ export default async function Home() {
           </p>
           <div className="space-x-4 inline-flex items-center">
             <Link
-              href="/templates"
+              href="/handbooks"
               className={cn(buttonVariants({ size: "lg", variant: "default" }))}
             >
-              Templates
+              Handbooks
             </Link>
             <Link
               href="https://github.com/AntonioObra/coderepo" target="_blank"
