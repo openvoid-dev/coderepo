@@ -1,7 +1,10 @@
+import AdminTemplatesPageClient from "~/app/profile/admin/templates/client";
+import { api } from "~/trpc/server";
+
 export default async function AdminTemplatesPage() {
+  const initialTemplates = await api.template.getAllTemplates.query();
+
   return (
-    <div>
-      <h1>Admin Templates</h1>
-    </div>
+    <AdminTemplatesPageClient initialTemplates={initialTemplates} />
   );
 }
