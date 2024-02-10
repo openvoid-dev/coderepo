@@ -4,8 +4,8 @@ import {
   type DefaultSession,
   type NextAuthOptions,
 } from "next-auth";
-import { type AdapterUser } from "next-auth/adapters";
 import GitHubProvider from "next-auth/providers/github";
+import GoogleProvider from "next-auth/providers/google";
 
 import { env } from "~/env";
 import { db } from "~/server/db";
@@ -31,6 +31,7 @@ declare module "next-auth" {
  * @see https://next-auth.js.org/configuration/options
  */
 export const authOptions: NextAuthOptions = {
+  secret: env.NEXTAUTH_SECRET,
   callbacks: {
     session: ({ session, user }) => ({
       ...session,
@@ -43,7 +44,7 @@ export const authOptions: NextAuthOptions = {
   },
   pages: {
     signIn: "/signin",
-    newUser: "/signup",
+    newUser: "/profile",
   },
   adapter: PrismaAdapter(db),
   providers: [
@@ -51,6 +52,10 @@ export const authOptions: NextAuthOptions = {
       clientId: env.GITHUB_CLIENT_ID,
       clientSecret: env.GITHUB_CLIENT_SECRET,
     }),
+    // GoogleProvider({
+    //   clientId: env.GOOGLE_CLIENT_ID,
+    //   clientSecret: env.GOOGLE_CLIENT_SECRET,
+    // }),
   ],
 };
 
