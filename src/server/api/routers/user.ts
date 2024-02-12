@@ -67,4 +67,62 @@ export const userRouter = createTRPCRouter({
 
     return savedResources.map(({ resource }) => resource);
   }),
+
+  saveTemplate: protectedProcedure
+    .input(
+      z.object({
+        id: z.number(),
+      }),
+    )
+    .mutation(async ({ ctx, input }) => {
+      await ctx.db.myTemplate.create({
+        data: {
+          userId: ctx.session.user.id,
+          templateId: input.id,
+        },
+      });
+
+      return { success: true };
+    }),
+
+  unsaveTemplate: protectedProcedure
+    .input(
+      z.object({
+        id: z.number(),
+      }),
+    )
+    .mutation(async ({ ctx, input }) => {
+      await ctx.db.myTemplate.delete({
+        where: {
+          userId_templateId: {
+            userId: ctx.session.user.id,
+            templateId: input.id,
+          },
+        },
+      });
+
+      return { success: true };
+    }),
+
+  getSavedTemplates: protectedProcedure.query(async ({ ctx }) => {
+    const savedTemplates = await ctx.db.myTemplate.findMany({
+      where: {
+        userId: ctx.session.user.id,
+      },
+      select: {
+        template: {
+          select: {
+            id: true,
+            name: true,
+            description: true,
+            updatedAt: true,
+            githubUrl: true,
+            slug: true,
+          },
+        },
+      },
+    });
+
+    return savedTemplates.map(({ template }) => template);
+  }),
 });

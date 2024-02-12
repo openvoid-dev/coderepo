@@ -65,6 +65,23 @@ export const templateRouter = createTRPCRouter({
     .query(async ({ ctx, input }) => {
       const template = await ctx.db.template.findUnique({
         where: { slug: input.slug },
+        select: {
+          id: true,
+          name: true,
+          description: true,
+          slug: true,
+          githubUrl: true,
+          content: true,
+          createdAt: true,
+          updatedAt: true,
+          myTemplates: ctx.session?.user
+            ? {
+                where: {
+                  userId: ctx.session?.user.id,
+                },
+              }
+            : false,
+        },
       });
 
       return template;

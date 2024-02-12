@@ -69,7 +69,8 @@ model Template {
     createdAt   DateTime @default(now())
     updatedAt   DateTime @updatedAt
 
-    pages TemplatePage[]
+    pages       TemplatePage[]
+    myTemplates MyTemplate[]
 }
 
 model TemplatePage {
@@ -158,6 +159,7 @@ model User {
 
     role        Role         @default(USER)
     myResources MyResource[]
+    myTemplates MyTemplate[]
 }
 
 model MyResource {
@@ -171,6 +173,19 @@ model MyResource {
     resource   Resource @relation(fields: [resourceId], references: [id])
 
     @@unique([userId, resourceId])
+}
+
+model MyTemplate {
+    id        Int      @id @default(autoincrement())
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    userId     String
+    templateId Int
+    user       User     @relation(fields: [userId], references: [id])
+    template   Template @relation(fields: [templateId], references: [id])
+
+    @@unique([userId, templateId])
 }
 
 model VerificationToken {
