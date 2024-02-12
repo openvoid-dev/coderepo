@@ -15,7 +15,7 @@ interface TemplateCardProps {
 }
 
 const TemplateCard = ({ name, description, id, slug, githubUrl, updatedAt }: TemplateCardProps) => {
-    const formatedDate = format(updatedAt, "dd.mm.yyyy")
+    const formatedDate = format(updatedAt, "dd.MM.yyyy")
 
     return (
         <div className="bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-secondary via-background to-background border-2 border-muted rounded-lg p-8 relative group flex flex-col">
