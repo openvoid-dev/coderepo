@@ -37,9 +37,9 @@ const SignInForm = () => {
                 <Icons.gitHub className="w-5 h-5 mr-4" /> Sign in with GitHub
             </Button>
 
-            {/* <Button className="w-full" variant="secondary" type="button" onClick={() => onAuthSignIn("google")}>
+            <Button className="w-full" variant="secondary" type="button" onClick={() => onAuthSignIn("google")}>
                 <Icons.google className="w-5 h-5 mr-4" /> Sign in with Google
-            </Button> */}
+            </Button>
         </div>
     )
 }
