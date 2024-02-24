@@ -7,6 +7,7 @@ import { ThemeProvider } from "~/components/ThemeProvider";
 import { cn } from "~/lib/utils";
 import Navbar from "~/components/Navbar";
 import { Toaster } from "~/components/ui/sonner";
+import Footer from "~/components/Footer";
 
 // Fonts
 const poppins = Poppins({
@@ -34,15 +35,18 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={cn(
-        poppins.className,
-        nunito.variable,
-        "min-h-screen bg-background antialiased grainy dark"
-      )}>
+      <body
+        className={cn(
+          poppins.className,
+          nunito.variable,
+          "grainy dark min-h-screen bg-background antialiased",
+        )}
+      >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <TRPCReactProvider>
             <Navbar />
             {children}
+            <Footer />
           </TRPCReactProvider>
           <Toaster />
         </ThemeProvider>

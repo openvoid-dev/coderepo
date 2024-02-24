@@ -9,23 +9,13 @@ const Navbar = async () => {
   const session = await getServerAuthSession();
 
   return (
-    <header className="sticky top-0 z-50 border-b border-muted bg-background/75 py-4 backdrop-blur-2xl">
+    <header className="py-6">
       <nav className="container flex items-center justify-between">
-        <div className="flex items-center gap-6">
-          <div className="mr-6">
-            <Link href="/" className="font-heading text-2xl font-bold">
-              <span
-                className="
-                    bg-gradient-to-bl from-primary to-primary bg-[length:100%_40%]
-                    bg-bottom bg-no-repeat dark:from-primary dark:to-primary"
-              >
-                Code Repo
-              </span>
-            </Link>
-          </div>
+        <Link href="/" className="font-heading text-2xl font-bold">
+          Code Repo
+        </Link>
 
-          <NavbarLinks />
-        </div>
+        <NavbarLinks />
 
         <div className="flex items-center gap-3">
           <Link

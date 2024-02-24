@@ -19,7 +19,7 @@ export default async function ResourcesByCategoryPage({
   }
 
   return (
-    <main className="pb-8 pt-6 md:pb-12 md:pt-10 lg:py-16">
+    <main className="min-h-screen pb-8 pt-6 md:pb-12 md:pt-10 lg:py-16">
       <ResourcesByCategoryPageClient
         slug={params.slug}
         category={category}

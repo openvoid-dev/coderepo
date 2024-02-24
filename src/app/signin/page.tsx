@@ -15,7 +15,7 @@ export default async function SignInPage() {
   }
 
   return (
-    <main className="pb-8 pt-6 md:pb-12 md:pt-10 lg:py-16">
+    <main className="min-h-screen pb-8 pt-6 md:pb-12 md:pt-10 lg:py-16">
       <PageHeader
         heading="Sign in"
         text="Enter your credentials to access your account"

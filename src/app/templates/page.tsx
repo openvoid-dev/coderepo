@@ -8,7 +8,7 @@ export default async function TemplatesPage() {
   const initialTemplatesData = await api.template.getAllTemplates.query();
 
   return (
-    <main className="pb-8 pt-6 md:pb-12 md:pt-10 lg:py-16">
+    <main className="min-h-screen pb-8 pt-6 md:pb-12 md:pt-10 lg:py-16">
       <PageHeader
         heading="Inspiring Templates to Use"
         text="Exploring the Possibilities of Cutting-Edge Web Development Technologies: Showcasing Innovative and Inspiring Projects"

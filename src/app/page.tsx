@@ -7,6 +7,8 @@ import { buttonVariants } from "~/components/ui/button";
 import { HomeTemplatesClient } from "~/app/client";
 import { cn } from "~/lib/utils";
 import { api } from "~/trpc/server";
+import TechnologyCard from "~/components/TechnologyCard";
+import { mainConfig } from "~/config/main";
 
 export default async function Home() {
   noStore();
@@ -15,7 +17,7 @@ export default async function Home() {
   return (
     <main className="">
       {/* Hero */}
-      <section className="h-screen pb-8 pt-6 md:pb-12 md:pt-10 lg:py-32">
+      <section className="pb-8 pt-6 md:pb-12 md:pt-10 lg:py-32">
         <div className="container relative isolate flex flex-col items-center gap-6">
           <div
             aria-hidden="true"
@@ -65,6 +67,17 @@ export default async function Home() {
             </Link>
           </div>
         </div>
+      </section>
+
+      <section className="container mb-32 grid justify-center gap-4 sm:grid-cols-2 md:grid-cols-3">
+        {mainConfig.technologies.map((technology) => (
+          <TechnologyCard
+            key={technology.title}
+            title={technology.title}
+            description={technology.description}
+            icon={technology.icon}
+          />
+        ))}
       </section>
 
       {/* Templates */}
