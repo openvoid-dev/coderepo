@@ -1,8 +1,10 @@
+import { unstable_noStore as noStore } from "next/cache";
 import TemplatesPageClient from "~/app/templates/client";
 import PageHeader from "~/components/PageHeader";
 import { api } from "~/trpc/server";
 
 export default async function TemplatesPage() {
+  noStore();
   const initialTemplatesData = await api.template.getAllTemplates.query();
 
   return (

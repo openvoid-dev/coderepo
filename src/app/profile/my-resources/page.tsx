@@ -1,7 +1,10 @@
+import { unstable_noStore as noStore } from "next/cache";
+
 import MyResourcesProfilePageClient from "~/app/profile/my-resources/client";
 import { api } from "~/trpc/server";
 
 export default async function MyResourcesProfilePage() {
+  noStore();
   const initialResourcesData = await api.user.getSavedResources.query();
 
   return (
@@ -10,7 +13,9 @@ export default async function MyResourcesProfilePage() {
         <h1 className="text-2xl font-semibold">My Resources</h1>
       </div>
 
-      <MyResourcesProfilePageClient initialResourcesData={initialResourcesData} />
+      <MyResourcesProfilePageClient
+        initialResourcesData={initialResourcesData}
+      />
     </main>
   );
 }

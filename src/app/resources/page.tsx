@@ -1,3 +1,5 @@
+import { unstable_noStore as noStore } from "next/cache";
+
 import PageHeader from "~/components/PageHeader";
 import ResourceCategoryCard from "~/components/ResourceCategoryCard";
 import { api } from "~/trpc/server";
@@ -5,6 +7,7 @@ import { api } from "~/trpc/server";
 import { type Icons } from "~/components/Icons";
 
 export default async function ResourceCategoriesPage() {
+  noStore();
   const resourceCategories = await api.resource.getResourceCategories.query();
 
   return (

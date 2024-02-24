@@ -1,18 +1,22 @@
 import Link from "next/link";
-import { HomeTemplatesClient } from "~/app/client";
+import { unstable_noStore as noStore } from "next/cache";
+
 import { Icons } from "~/components/Icons";
 import { buttonVariants } from "~/components/ui/button";
+
+import { HomeTemplatesClient } from "~/app/client";
 import { cn } from "~/lib/utils";
 import { api } from "~/trpc/server";
 
 export default async function Home() {
+  noStore();
   const initialTemplatesData = await api.template.getAllTemplates.query();
 
   return (
     <main className="">
       {/* Hero */}
-      <section className="pb-8 pt-6 md:pb-12 md:pt-10 lg:py-32 h-screen">
-        <div className="container flex flex-col items-center gap-6 relative isolate">
+      <section className="h-screen pb-8 pt-6 md:pb-12 md:pt-10 lg:py-32">
+        <div className="container relative isolate flex flex-col items-center gap-6">
           <div
             aria-hidden="true"
             className="pointer-events-none absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
@@ -26,16 +30,22 @@ export default async function Home() {
             />
           </div>
 
-          <Link href="/templates" className="flex items-center gap-2 bg-red-900/10 text-red-100 rounded-full px-4 py-2 border border-red-700/75 font-semibold font-heading">Checkout new starter templates. <Icons.arrowRight className="w-5 h-5 font-semibold" /></Link>
+          <Link
+            href="/templates"
+            className="flex items-center gap-2 rounded-full border border-red-700/75 bg-red-900/10 px-4 py-2 font-heading font-semibold text-red-100"
+          >
+            Checkout new starter templates.{" "}
+            <Icons.arrowRight className="h-5 w-5 font-semibold" />
+          </Link>
 
-          <h1 className="font-bold font-heading text-center text-4xl md:text-5xl lg:text-6xl xl:text-7xl pt-4 pb-2 overflow-hidden">
+          <h1 className="overflow-hidden pb-2 pt-4 text-center font-heading text-4xl font-bold md:text-5xl lg:text-6xl xl:text-7xl">
             Code Repo: Exploring Web Technologies and Documentation
           </h1>
-          <p className="max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8 text-center">
+          <p className="max-w-[42rem] text-center leading-normal text-muted-foreground sm:text-xl sm:leading-8">
             A Comprehensive Repository of Web Technology Examples and
             Documentation for Developers
           </p>
-          <div className="space-x-4 inline-flex items-center">
+          <div className="inline-flex items-center space-x-4">
             <Link
               href="/handbooks"
               className={cn(buttonVariants({ size: "lg", variant: "default" }))}
@@ -43,11 +53,14 @@ export default async function Home() {
               Handbooks
             </Link>
             <Link
-              href="https://github.com/AntonioObra/coderepo" target="_blank"
+              href="https://github.com/AntonioObra/coderepo"
+              target="_blank"
               rel="noreferrer"
-              className={cn(buttonVariants({ variant: "secondary", size: "lg" }))}
+              className={cn(
+                buttonVariants({ variant: "secondary", size: "lg" }),
+              )}
             >
-              <Icons.gitHub className="w-5 h-5 mr-2" />
+              <Icons.gitHub className="mr-2 h-5 w-5" />
               GitHub
             </Link>
           </div>
@@ -56,10 +69,13 @@ export default async function Home() {
 
       {/* Templates */}
       <section className="container mb-10">
-        <hgroup className='flex flex-col items-center gap-2'>
-          <h1 className='font-bold font-heading text-center text-3xl md:text-4xl lg:text-6xl pt-4 pb-2'>Inspiring Templates to Use</h1>
-          <p className="max-w-[65rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8 text-center">
-            Exploring the Possibilities of Cutting-Edge Web Development Technologies: Showcasing Innovative and Inspiring Projects
+        <hgroup className="flex flex-col items-center gap-2">
+          <h1 className="pb-2 pt-4 text-center font-heading text-3xl font-bold md:text-4xl lg:text-6xl">
+            Inspiring Templates to Use
+          </h1>
+          <p className="max-w-[65rem] text-center leading-normal text-muted-foreground sm:text-xl sm:leading-8">
+            Exploring the Possibilities of Cutting-Edge Web Development
+            Technologies: Showcasing Innovative and Inspiring Projects
           </p>
         </hgroup>
 

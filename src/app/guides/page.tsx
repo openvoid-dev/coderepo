@@ -1,8 +1,11 @@
+import { unstable_noStore as noStore } from "next/cache";
+
 import GuidesPageClient from "~/app/guides/client";
 import PageHeader from "~/components/PageHeader";
 import { api } from "~/trpc/server";
 
 export default async function GuidesPage() {
+  noStore();
   const initialGuidesData = await api.guide.getGuides.query();
 
   return (

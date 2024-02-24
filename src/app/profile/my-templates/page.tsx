@@ -1,7 +1,10 @@
+import { unstable_noStore as noStore } from "next/cache";
+
 import MyTemplatesProfilePageClient from "~/app/profile/my-templates/client";
 import { api } from "~/trpc/server";
 
 export default async function MyTemplatesProfilePage() {
+  noStore();
   const initialTemplatesData = await api.user.getSavedTemplates.query();
 
   return (
@@ -10,7 +13,9 @@ export default async function MyTemplatesProfilePage() {
         <h1 className="text-2xl font-semibold">My Templates</h1>
       </div>
 
-      <MyTemplatesProfilePageClient initialTemplatesData={initialTemplatesData} />
+      <MyTemplatesProfilePageClient
+        initialTemplatesData={initialTemplatesData}
+      />
     </main>
   );
 }

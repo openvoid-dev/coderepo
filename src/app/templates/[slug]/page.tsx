@@ -1,21 +1,24 @@
 import { notFound } from "next/navigation";
+import { unstable_noStore as noStore } from "next/cache";
+
 import SingleTemplatesPageClient from "~/app/templates/[slug]/client";
 import { api } from "~/trpc/server";
 
 export default async function SingleTemplatesPage({
-    params
+  params,
 }: {
-    params: {
-        slug: string;
-    };
+  params: {
+    slug: string;
+  };
 }) {
-    const intialTemplate = await api.template.getTemplateBySlug.query({ slug: params.slug });
+  noStore();
+  const intialTemplate = await api.template.getTemplateBySlug.query({
+    slug: params.slug,
+  });
 
-    if (!intialTemplate) {
-        notFound();
-    }
+  if (!intialTemplate) {
+    notFound();
+  }
 
-    return (
-        <SingleTemplatesPageClient initialTemplate={intialTemplate} />
-    )
+  return <SingleTemplatesPageClient initialTemplate={intialTemplate} />;
 }

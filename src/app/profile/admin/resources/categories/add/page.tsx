@@ -1,22 +1,29 @@
 import Link from "next/link";
+import { unstable_noStore as noStore } from "next/cache";
+
 import { Icons } from "~/components/Icons";
 import AddResourceCategoryForm from "~/components/admin/ResourceCategory/AddResourceCategoryForm";
 import { buttonVariants } from "~/components/ui/button";
 import { cn } from "~/lib/utils";
 
 export default async function AdminAddResource() {
-    return (
-        <main className="bg-secondary/20 rounded-lg py-10 px-8">
-            <div className="flex items-center justify-between mb-6">
-                <h1 className="text-2xl font-semibold">Create Resource Category</h1>
+  noStore();
 
-                <Link href="/profile/admin/resources" className={cn(buttonVariants({ variant: "link" }))}>
-                    <Icons.back className="w-5 h-5 mr-2" />
-                    Go Back
-                </Link>
-            </div>
+  return (
+    <main className="rounded-lg bg-secondary/20 px-8 py-10">
+      <div className="mb-6 flex items-center justify-between">
+        <h1 className="text-2xl font-semibold">Create Resource Category</h1>
 
-            <AddResourceCategoryForm />
-        </main >
-    )
+        <Link
+          href="/profile/admin/resources"
+          className={cn(buttonVariants({ variant: "link" }))}
+        >
+          <Icons.back className="mr-2 h-5 w-5" />
+          Go Back
+        </Link>
+      </div>
+
+      <AddResourceCategoryForm />
+    </main>
+  );
 }

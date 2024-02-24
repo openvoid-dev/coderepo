@@ -1,7 +1,10 @@
+import { unstable_noStore as noStore } from "next/cache";
+
 export default async function ProfilePage() {
-    return (
-        <div>
-            <h1>Profile Page</h1>
-        </div>
-    )
+  noStore();
+  return (
+    <div>
+      <h1>Profile Page</h1>
+    </div>
+  );
 }

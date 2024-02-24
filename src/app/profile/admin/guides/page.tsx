@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { unstable_noStore as noStore } from "next/cache";
+
 import { Icons } from "~/components/Icons";
 import { guideColumns } from "~/components/admin/Guide/columns";
 import { GuideDataTable } from "~/components/admin/Guide/data-table";
@@ -9,6 +11,7 @@ import { cn } from "~/lib/utils";
 import { api } from "~/trpc/server";
 
 export default async function AdminGuidesPage() {
+  noStore();
   const allGuides = await api.guide.getGuides.query();
   const allGuideTags = await api.guide.getGuideTags.query();
 
@@ -17,12 +20,15 @@ export default async function AdminGuidesPage() {
       {/* Guides */}
       <section className="mt-4">
         <div className="flex justify-between">
-          <h2 className="font-bold font-heading text-left text-2xl">
+          <h2 className="text-left font-heading text-2xl font-bold">
             Edit Guides
           </h2>
 
-          <Link href="/profile/admin/guides/add" className={cn(buttonVariants({ variant: "link" }))}>
-            <Icons.create className="w-5 h-5 mr-2" /> Add Guide
+          <Link
+            href="/profile/admin/guides/add"
+            className={cn(buttonVariants({ variant: "link" }))}
+          >
+            <Icons.create className="mr-2 h-5 w-5" /> Add Guide
           </Link>
         </div>
 
@@ -32,12 +38,15 @@ export default async function AdminGuidesPage() {
       {/* Guide Tags */}
       <section className="">
         <div className="flex justify-between">
-          <h2 className="font-bold font-heading text-left text-2xl">
+          <h2 className="text-left font-heading text-2xl font-bold">
             Edit Guide Tags
           </h2>
 
-          <Link href="/profile/admin/guides/tags/add" className={cn(buttonVariants({ variant: "link" }))}>
-            <Icons.create className="w-5 h-5 mr-2" /> Add Guide Tag
+          <Link
+            href="/profile/admin/guides/tags/add"
+            className={cn(buttonVariants({ variant: "link" }))}
+          >
+            <Icons.create className="mr-2 h-5 w-5" /> Add Guide Tag
           </Link>
         </div>
         <GuideTagDataTable columns={guideTagColumns} data={allGuideTags} />
