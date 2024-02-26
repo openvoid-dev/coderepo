@@ -42,7 +42,7 @@ export default function RootLayout({
           "grainy dark min-h-screen bg-background antialiased",
         )}
       >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           <TRPCReactProvider>
             <Navbar />
             {children}

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Icons } from "~/components/Icons";
+import ModeToggle from "~/components/ModeToggle";
 import NavbarLinks from "~/components/NavbarLinks";
 import { buttonVariants } from "~/components/ui/button";
 import { cn } from "~/lib/utils";
@@ -18,6 +19,8 @@ const Navbar = async () => {
         <NavbarLinks />
 
         <div className="flex items-center gap-3">
+          {/* <ModeToggle /> */}
+
           <Link
             href="https://github.com/AntonioObra/coderepo"
             target="_blank"

@@ -32,6 +32,9 @@ import {
   Star,
   Copy,
   MonitorPlay,
+  Sun,
+  Moon,
+  Laptop,
 } from "lucide-react";
 import { twMerge } from "tailwind-merge";
 
@@ -71,6 +74,9 @@ export const Icons = {
   star: Star,
   copy: Copy,
   monitorPlay: MonitorPlay,
+  sun: Sun,
+  moon: Moon,
+  laptop: Laptop,
   gitHub: ({ className, ...props }: LucideProps) => (
     <svg
       aria-hidden="true"

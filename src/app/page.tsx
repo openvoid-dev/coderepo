@@ -34,7 +34,7 @@ export default async function Home() {
 
           <Link
             href="/templates"
-            className="flex items-center gap-2 rounded-full border border-red-700/75 bg-red-900/10 px-4 py-2 font-heading font-semibold text-red-100"
+            className="flex items-center gap-2 rounded-full border border-red-700/75 bg-red-900/10 px-4 py-2 font-heading font-semibold text-red-500 dark:text-red-100"
           >
             Checkout new starter templates.{" "}
             <Icons.arrowRight className="h-5 w-5 font-semibold" />
