@@ -69,6 +69,7 @@ export default async function Home() {
         </div>
       </section>
 
+      {/* Technologies */}
       <section className="container mb-32 grid justify-center gap-4 sm:grid-cols-2 md:grid-cols-3">
         {mainConfig.technologies.map((technology) => (
           <TechnologyCard
@@ -81,7 +82,7 @@ export default async function Home() {
       </section>
 
       {/* Templates */}
-      <section className="container mb-10">
+      <section className="container mb-32">
         <hgroup className="flex flex-col items-center gap-2">
           <h1 className="pb-2 pt-4 text-center font-heading text-3xl font-bold md:text-4xl lg:text-6xl">
             Inspiring Templates to Use
@@ -93,6 +94,21 @@ export default async function Home() {
         </hgroup>
 
         <HomeTemplatesClient initialTemplatesData={initialTemplatesData} />
+      </section>
+
+      {/* Open Source */}
+      <section className="container mb-32">
+        <hgroup className="flex flex-col items-center gap-2">
+          <h1 className="pb-2 pt-4 text-center font-heading text-3xl font-bold md:text-4xl lg:text-6xl">
+            Driving Innovation Through Open Source
+          </h1>
+          <p className="max-w-[65rem] text-center leading-normal text-muted-foreground sm:text-xl sm:leading-8">
+            Through active engagement with contributors and users, we aim to
+            create a collaborative environment where ideas are shared, issues
+            are addressed, and the project evolves to meet the ever-changing
+            needs of web development.
+          </p>
+        </hgroup>
       </section>
     </main>
   );

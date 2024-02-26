@@ -31,6 +31,7 @@ import {
   Plus,
   Star,
   Copy,
+  MonitorPlay,
 } from "lucide-react";
 import { twMerge } from "tailwind-merge";
 
@@ -69,6 +70,7 @@ export const Icons = {
   create: Plus,
   star: Star,
   copy: Copy,
+  monitorPlay: MonitorPlay,
   gitHub: ({ className, ...props }: LucideProps) => (
     <svg
       aria-hidden="true"
