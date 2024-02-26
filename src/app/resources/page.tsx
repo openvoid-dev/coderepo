@@ -5,6 +5,15 @@ import ResourceCategoryCard from "~/components/ResourceCategoryCard";
 import { api } from "~/trpc/server";
 
 import { type Icons } from "~/components/Icons";
+import { type Metadata } from "next";
+
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: "Resource Categories",
+    description:
+      "Unlocking a Treasure Trove of Tools, Tutorials, and References for Seamless Web Development Success. Browse through our curated list of resource categories to supercharge your web development journey.",
+  };
+}
 
 export default async function ResourceCategoriesPage() {
   noStore();

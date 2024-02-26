@@ -32,6 +32,8 @@
     "@trpc/react-query": "^10.43.6",
     "@trpc/server": "^10.43.6",
     "@types/react-syntax-highlighter": "^15.5.11",
+    "@vercel/analytics": "^1.2.2",
+    "@vercel/og": "^0.6.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "date-fns": "^3.3.1",

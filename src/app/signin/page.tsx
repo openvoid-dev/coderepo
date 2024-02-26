@@ -5,6 +5,15 @@ import PageHeader from "~/components/PageHeader";
 import SignInForm from "~/app/signin/SignInForm";
 
 import { getServerAuthSession } from "~/server/auth";
+import { type Metadata } from "next";
+
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: "Sign in",
+    description:
+      "Enter your credentials to access your account. If you don't have an account, you can sign up for free.",
+  };
+}
 
 export default async function SignInPage() {
   noStore();
