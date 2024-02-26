@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
+import { Icons } from "~/components/Icons";
 import { buttonVariants } from "~/components/ui/button";
 import { cn } from "~/lib/utils";
 import { api } from "~/trpc/react";
@@ -36,6 +38,21 @@ const TemplateNavigation = ({
     },
   );
 
+  // * Get parents and children
+  const parentPages = templatePages?.filter((page) => !page.parentId);
+  const childrenPages = templatePages?.filter((page) => page.parentId);
+
+  // * Group children by parent
+  const sortedTemplatePages = parentPages?.map((parent) => {
+    const children = childrenPages?.filter(
+      (child) => child.parentId === parent.id,
+    );
+    return {
+      ...parent,
+      children,
+    };
+  });
+
   const pathname = usePathname();
 
   return (
@@ -48,8 +65,10 @@ const TemplateNavigation = ({
           <div className="grid grid-flow-row auto-rows-max text-sm">
             <Link
               className={cn(
-                "flex w-full items-center rounded-md p-2 hover:underline",
-                pathname === `/templates/${templateSlug}` ? "bg-muted" : "",
+                "flex w-full items-center rounded-md p-2 text-muted-foreground hover:text-foreground",
+                pathname === `/templates/${templateSlug}`
+                  ? "bg-muted text-foreground"
+                  : "",
               )}
               target=""
               rel=""
@@ -64,19 +83,49 @@ const TemplateNavigation = ({
             Documentation
           </h4>
           <div className="grid grid-flow-row auto-rows-max text-sm">
-            {templatePages?.map((page) => (
-              <Link
-                href={`/templates/${templateSlug}/${page.slug}`}
-                key={page.id}
-                className={cn(
-                  "flex w-full items-center rounded-md p-2 hover:underline",
-                  pathname === `/tmeplates/${templateSlug}/${page.slug}`
-                    ? "bg-muted"
-                    : "",
+            {sortedTemplatePages?.map((page) => (
+              <>
+                {page.children.length > 0 ? (
+                  <Dropdown
+                    key={page.id}
+                    name={page.name}
+                    slug={page.slug}
+                    pathname={pathname}
+                    templateSlug={templateSlug}
+                  >
+                    <div className={`ml-4 border-l-2 pl-4`}>
+                      {page.children.map((child) => (
+                        <Link
+                          href={`/templates/${templateSlug}/${page.slug}/${child.slug}`}
+                          key={child.id}
+                          className={cn(
+                            "flex w-full items-center rounded-md p-2 text-muted-foreground hover:text-foreground",
+                            pathname ===
+                              `/templates/${templateSlug}/${page.slug}/${child.slug}`
+                              ? "bg-muted text-foreground"
+                              : "",
+                          )}
+                        >
+                          {child.name}
+                        </Link>
+                      ))}
+                    </div>
+                  </Dropdown>
+                ) : (
+                  <Link
+                    key={page.id}
+                    href={`/templates/${templateSlug}/${page.slug}`}
+                    className={cn(
+                      "flex w-full items-center rounded-md p-2 text-muted-foreground hover:text-foreground",
+                      pathname === `/templates/${templateSlug}/${page.slug}`
+                        ? "bg-muted text-foreground"
+                        : "",
+                    )}
+                  >
+                    {page.name}
+                  </Link>
                 )}
-              >
-                {page.name}
-              </Link>
+              </>
             ))}
           </div>
         </div>
@@ -86,3 +135,48 @@ const TemplateNavigation = ({
 };
 
 export default TemplateNavigation;
+
+function Dropdown({
+  children,
+  slug,
+  name,
+  templateSlug,
+  pathname,
+}: {
+  children: React.ReactNode;
+  slug: string;
+  name: string;
+  templateSlug: string;
+  pathname: string;
+}) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    if (isOpen && pathname === `/templates/${templateSlug}/${slug}`) {
+      return setIsOpen(false);
+    }
+
+    setIsOpen(true);
+  };
+
+  return (
+    <div>
+      <Link
+        href={`/templates/${templateSlug}/${slug}`}
+        className={cn(
+          "flex w-full items-center rounded-md p-2 text-muted-foreground hover:text-foreground",
+          pathname === `/templates/${templateSlug}/${slug}`
+            ? "bg-muted text-foreground"
+            : "",
+        )}
+        onClick={toggleDropdown}
+      >
+        {name}
+
+        <Icons.arrowRight className="ml-auto h-4 w-4" />
+      </Link>
+
+      {isOpen && children}
+    </div>
+  );
+}

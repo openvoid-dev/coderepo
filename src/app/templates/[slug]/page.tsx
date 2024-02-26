@@ -3,6 +3,7 @@ import { unstable_noStore as noStore } from "next/cache";
 
 import SingleTemplatesPageClient from "~/app/templates/[slug]/client";
 import { api } from "~/trpc/server";
+import { db } from "~/server/db";
 
 export default async function SingleTemplatesPage({
   params,

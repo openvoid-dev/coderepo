@@ -123,4 +123,24 @@ export const templateRouter = createTRPCRouter({
 
       return templatePage;
     }),
+
+  getTemplatePageBySlug: publicProcedure
+    .input(z.object({ slug: z.string(), templatePageSlug: z.string() }))
+    .query(async ({ ctx, input }) => {
+      const templatePage = await ctx.db.templatePage.findUnique({
+        where: {
+          slug: input.templatePageSlug,
+          template: {
+            slug: input.slug,
+          },
+        },
+        select: {
+          name: true,
+          slug: true,
+          content: true,
+        },
+      });
+
+      return templatePage;
+    }),
 });
