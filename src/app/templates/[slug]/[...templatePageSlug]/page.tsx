@@ -19,9 +19,7 @@ export default async function TemplatePage({
   const templatePage = await api.template.getTemplatePageBySlug.query({
     slug: params.slug,
     templatePageSlug:
-      params.templatePageSlug.length === 1
-        ? params.templatePageSlug[0]!
-        : params.templatePageSlug[1]!,
+      params.templatePageSlug[params.templatePageSlug.length - 1] ?? "",
   });
 
   if (!templatePage) {
