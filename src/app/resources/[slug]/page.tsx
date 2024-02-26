@@ -1,6 +1,7 @@
 import { unstable_noStore as noStore } from "next/cache";
 import { notFound } from "next/navigation";
 import ResourcesByCategoryPageClient from "~/app/resources/[slug]/client";
+import { db } from "~/server/db";
 import { api } from "~/trpc/server";
 
 export default async function ResourcesByCategoryPage({
@@ -27,4 +28,16 @@ export default async function ResourcesByCategoryPage({
       />
     </main>
   );
+}
+
+export async function generateStaticParams() {
+  const resourceCategories = await db.resourceCategory.findMany({
+    select: {
+      slug: true,
+    },
+  });
+
+  return resourceCategories.map((resourceCategory) => ({
+    slug: resourceCategory.slug,
+  }));
 }

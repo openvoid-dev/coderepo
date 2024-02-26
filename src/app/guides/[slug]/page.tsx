@@ -3,6 +3,7 @@ import { unstable_noStore as noStore } from "next/cache";
 
 import SingleGuidesPageClient from "~/app/guides/[slug]/client";
 import { api } from "~/trpc/server";
+import { db } from "~/server/db";
 
 export default async function SingleGuidesPage({
   params,
@@ -23,4 +24,16 @@ export default async function SingleGuidesPage({
       <SingleGuidesPageClient initialData={guide} slug={params.slug} />
     </main>
   );
+}
+
+export async function generateStaticParams() {
+  const guides = await db.guide.findMany({
+    select: {
+      slug: true,
+    },
+  });
+
+  return guides.map((guide) => ({
+    slug: guide.slug,
+  }));
 }
