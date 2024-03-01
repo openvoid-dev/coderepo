@@ -27,7 +27,7 @@ export default async function ResourceCategoriesPage() {
       />
 
       {resourceCategories.length > 0 && (
-        <section className="container mt-20 grid grid-cols-1 gap-6 md:grid-cols-4">
+        <section className="container mt-20 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {resourceCategories.map((resource, index) => (
             <ResourceCategoryCard
               key={resource.slug + index}

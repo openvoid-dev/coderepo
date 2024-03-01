@@ -17,20 +17,25 @@ interface ResourcesByCategoryPageClientProps {
     name: string;
     description: string;
   };
-  initialResourcesData: Awaited<ReturnType<(typeof serverClient.resource.getResourcesForCategory.query)>>;
+  initialResourcesData: Awaited<
+    ReturnType<typeof serverClient.resource.getResourcesForCategory.query>
+  >;
 }
 
 export default function ResourcesByCategoryPageClient({
   slug,
   category,
-  initialResourcesData
+  initialResourcesData,
 }: ResourcesByCategoryPageClientProps) {
-  const { data, isLoading } = api.resource.getResourcesForCategory.useQuery({
-    slug: slug,
-  }, {
-    initialData: initialResourcesData,
-    refetchOnMount: false,
-  });
+  const { data, isLoading } = api.resource.getResourcesForCategory.useQuery(
+    {
+      slug: slug,
+    },
+    {
+      initialData: initialResourcesData,
+      refetchOnMount: false,
+    },
+  );
 
   return (
     <>
@@ -54,7 +59,7 @@ export default function ResourcesByCategoryPageClient({
         </div>
       )}
 
-      <section className="container mt-20 grid grid-cols-1 gap-6 md:grid-cols-3">
+      <section className=" container mt-20 grid grid-cols-1 gap-6  md:grid-cols-2 xl:grid-cols-3">
         {data?.resources.map((resource, index) => (
           <ResourceCard
             key={resource.name + index}
