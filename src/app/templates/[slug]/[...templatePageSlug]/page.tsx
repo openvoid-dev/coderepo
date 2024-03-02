@@ -77,7 +77,7 @@ export default async function TemplatePage({
 
   return (
     <main>
-      <PageHeader heading={templatePage.name} />
+      <PageHeader heading={templatePage.name} background="none" />
 
       <div className="mt-14">
         <Markdown
