@@ -40,6 +40,7 @@ export const resourceRouter = createTRPCRouter({
           id: true,
           name: true,
           description: true,
+          icon: true,
         },
       });
 

@@ -16,6 +16,7 @@ interface ResourcesByCategoryPageClientProps {
     id: number;
     name: string;
     description: string;
+    icon: string;
   };
   initialResourcesData: Awaited<
     ReturnType<typeof serverClient.resource.getResourcesForCategory.query>
@@ -39,7 +40,21 @@ export default function ResourcesByCategoryPageClient({
 
   return (
     <>
-      <PageHeader heading={category.name} text={category.description} />
+      <PageHeader
+        heading={category.name}
+        text={category.description}
+        icon={category.icon}
+      />
+
+      <div className="mt-14 flex flex-col items-center gap-4">
+        <Link
+          href="/resources"
+          className={cn(buttonVariants({ variant: "secondary" }))}
+        >
+          <Icons.back className="mr-2 h-5 w-5" />
+          Go back to resources.
+        </Link>
+      </div>
 
       {isLoading && <Loader className="mt-20" />}
 
@@ -48,14 +63,6 @@ export default function ResourcesByCategoryPageClient({
           <p className="mt-20 text-center text-xl text-secondary-foreground">
             No resources found.
           </p>
-
-          <Link
-            href="/resources"
-            className={cn(buttonVariants({ variant: "secondary" }))}
-          >
-            <Icons.back className="mr-2 h-5 w-5" />
-            Go back to resources.
-          </Link>
         </div>
       )}
 
