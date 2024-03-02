@@ -57,6 +57,8 @@ model Guide {
 
     tagId Int
     tag   GuideTag @relation(fields: [tagId], references: [id])
+
+    myGuides MyGuide[]
 }
 
 model Template {
@@ -160,6 +162,7 @@ model User {
     role        Role         @default(USER)
     myResources MyResource[]
     myTemplates MyTemplate[]
+    myGuides    MyGuide[]
 }
 
 model MyResource {
@@ -186,6 +189,19 @@ model MyTemplate {
     template   Template @relation(fields: [templateId], references: [id])
 
     @@unique([userId, templateId])
+}
+
+model MyGuide {
+    id        Int      @id @default(autoincrement())
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    userId  String
+    guideId Int
+    user    User   @relation(fields: [userId], references: [id])
+    guide   Guide  @relation(fields: [guideId], references: [id])
+
+    @@unique([userId, guideId])
 }
 
 model VerificationToken {

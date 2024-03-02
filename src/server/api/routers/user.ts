@@ -125,4 +125,61 @@ export const userRouter = createTRPCRouter({
 
     return savedTemplates.map(({ template }) => template);
   }),
+
+  saveGuide: protectedProcedure
+    .input(
+      z.object({
+        id: z.number(),
+      }),
+    )
+    .mutation(async ({ ctx, input }) => {
+      await ctx.db.myGuide.create({
+        data: {
+          userId: ctx.session.user.id,
+          guideId: input.id,
+        },
+      });
+
+      return { success: true };
+    }),
+
+  unsaveGuide: protectedProcedure
+    .input(
+      z.object({
+        id: z.number(),
+      }),
+    )
+    .mutation(async ({ ctx, input }) => {
+      await ctx.db.myGuide.delete({
+        where: {
+          userId_guideId: {
+            userId: ctx.session.user.id,
+            guideId: input.id,
+          },
+        },
+      });
+
+      return { success: true };
+    }),
+
+  getSavedGuides: protectedProcedure.query(async ({ ctx }) => {
+    const savedGuides = await ctx.db.myGuide.findMany({
+      where: {
+        userId: ctx.session.user.id,
+      },
+      select: {
+        guide: {
+          select: {
+            id: true,
+            name: true,
+            description: true,
+            updatedAt: true,
+            slug: true,
+          },
+        },
+      },
+    });
+
+    return savedGuides.map(({ guide }) => guide);
+  }),
 });

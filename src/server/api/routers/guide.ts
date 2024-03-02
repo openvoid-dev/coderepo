@@ -88,6 +88,13 @@ export const guideRouter = createTRPCRouter({
           },
           description: true,
           content: true,
+          myGuides: ctx.session?.user
+            ? {
+                where: {
+                  userId: ctx.session?.user.id,
+                },
+              }
+            : false,
         },
       });
 
