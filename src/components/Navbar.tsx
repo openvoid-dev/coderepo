@@ -10,7 +10,7 @@ const Navbar = async () => {
   const session = await getServerAuthSession();
 
   return (
-    <header className="py-6">
+    <header className="sticky top-0 z-50 bg-background/70 py-4 backdrop-blur-3xl">
       <nav className="container flex items-center justify-between">
         <Link href="/" className="font-heading text-2xl font-bold">
           Code Repo
@@ -19,7 +19,7 @@ const Navbar = async () => {
         <NavbarLinks />
 
         <div className="flex items-center gap-3">
-          {/* <ModeToggle /> */}
+          <ModeToggle />
 
           <Link
             href="https://github.com/AntonioObra/coderepo"

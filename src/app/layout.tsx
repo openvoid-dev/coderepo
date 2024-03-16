@@ -100,10 +100,10 @@ export default function RootLayout({
         className={cn(
           poppins.className,
           nunito.variable,
-          "grainy dark min-h-screen bg-background antialiased",
+          "grainy min-h-screen bg-background antialiased",
         )}
       >
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <TRPCReactProvider>
             <Navbar />
             {children}
