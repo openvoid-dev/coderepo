@@ -10,6 +10,7 @@ import { api } from "~/trpc/server";
 import TechnologyCard from "~/components/TechnologyCard";
 import { mainConfig } from "~/config/main";
 import Carousel from "~/components/Carousel";
+import TechnologyCards from "~/components/Carousel";
 
 export default async function Home() {
   noStore();
@@ -62,20 +63,8 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="mb-32 flex flex-col gap-4">
-        <Carousel />
-      </section>
-
-      {/* Technologies */}
-      <section className="container mb-32 grid justify-center gap-4 sm:grid-cols-2 md:grid-cols-3">
-        {mainConfig.technologies.map((technology) => (
-          <TechnologyCard
-            key={technology.title}
-            title={technology.title}
-            description={technology.description}
-            icon={technology.icon}
-          />
-        ))}
+      <section className="mb-32">
+        <TechnologyCards />
       </section>
 
       {/* Templates */}
