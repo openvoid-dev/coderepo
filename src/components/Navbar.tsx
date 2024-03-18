@@ -12,11 +12,13 @@ const Navbar = async () => {
   return (
     <header className="sticky top-0 z-50 bg-background/70 py-4 backdrop-blur-3xl">
       <nav className="container flex items-center justify-between">
-        <Link href="/" className="font-heading text-2xl font-bold">
-          Code Repo
-        </Link>
+        <div className="flex items-center gap-8">
+          <Link href="/" className="font-heading text-xl font-bold">
+            Code Repo
+          </Link>
 
-        <NavbarLinks />
+          <NavbarLinks />
+        </div>
 
         <div className="flex items-center gap-3">
           <ModeToggle />

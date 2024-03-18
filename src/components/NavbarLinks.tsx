@@ -7,12 +7,12 @@ import { HeaderLinks } from "~/config/header";
 const NavbarLinks = () => {
   const pathname = usePathname();
   return (
-    <div className="flex items-center gap-10">
+    <div className="flex items-center gap-6">
       {HeaderLinks.map((headerLink) => (
         <Link
           key={headerLink.path}
           href={headerLink.path}
-          className={`text-md animated-link font-heading text-foreground ${pathname === headerLink.path && "show"}`}
+          className={`text-md animated-link font-heading text-muted-foreground ${pathname === headerLink.path && "show text-secondary-foreground"}`}
         >
           {headerLink.name}
         </Link>

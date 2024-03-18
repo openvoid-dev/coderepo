@@ -25,7 +25,7 @@ const TechnologyCards = () => {
   );
 
   return (
-    <div className="flex flex-col gap-16">
+    <div className="pointer-events-none flex touch-none flex-col gap-16">
       <Carousel
         plugins={[pluginAutoScroll.current, pluginAutoPlay.current]}
         className="w-full"
