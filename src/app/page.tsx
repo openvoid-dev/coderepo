@@ -1,114 +1,166 @@
 import Link from "next/link";
-import { unstable_noStore as noStore } from "next/cache";
 
-import { Icons } from "~/components/Icons";
-import { buttonVariants } from "~/components/ui/button";
-
-import { HomeTemplatesClient } from "~/app/client";
-import { cn } from "~/lib/utils";
-import { api } from "~/trpc/server";
-import TechnologyCard from "~/components/TechnologyCard";
-import { mainConfig } from "~/config/main";
+import { getServerAuthSession } from "@/server/auth";
+import { api } from "@/trpc/server";
+import Image from "next/image";
+import {
+  PageActions,
+  PageHeader,
+  PageHeaderDescription,
+  PageHeaderHeading,
+} from "@/components/page-header";
+import { cn } from "@/lib/utils";
+import { buttonVariants } from "@/components/ui/button";
+import { Icons } from "@/components/icons";
+import { siteConfig } from "@/config/site";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  ArrowRight,
+  Code2Icon,
+  LayoutTemplate,
+  LibraryBig,
+  MoveRight,
+  Newspaper,
+  Sparkles,
+} from "lucide-react";
+import { CodeSandboxLogoIcon } from "@radix-ui/react-icons";
+import TechnologyCardCarousel from "@/components/technology-card-carousel";
 
 export default async function Home() {
-  noStore();
-  const initialTemplatesData = await api.template.getAllTemplates.query();
-
   return (
-    <main className="">
-      {/* Hero */}
-      <section className="pb-8 pt-6 md:pb-12 md:pt-10 lg:py-32">
-        <div className="container relative isolate flex flex-col items-center gap-6">
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
-          >
-            <div
-              className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-red-500 to-purple-500 opacity-30 sm:left-[calc(50%-10rem)] sm:w-[82.1875rem]"
-              style={{
-                clipPath:
-                  "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
-              }}
-            />
-          </div>
+    <main className="container relative  min-h-screen">
+      <div className="absolute inset-0 -z-10">
+        <Image src="/images/hero.webp" alt="hero" fill={true} />
+      </div>
 
-          <Link
-            href="/templates"
-            className="flex items-center gap-2 rounded-full border border-red-700/75 bg-red-900/10 px-4 py-2 font-heading font-semibold text-red-500 dark:text-red-100"
-          >
-            Checkout new starter templates.{" "}
-            <Icons.arrowRight className="h-5 w-5 font-semibold" />
+      <PageHeader className="lg:pt-48">
+        {/* <Announcement /> */}
+        <PageHeaderHeading>
+          Code Repo: Exploring Web Technologies and Documentation
+        </PageHeaderHeading>
+        <PageHeaderDescription>
+          A Comprehensive Repository of Web Technology Examples and
+          Documentation for Developers
+        </PageHeaderDescription>
+        <PageActions>
+          <Link href="/handbooks" className={cn(buttonVariants())}>
+            Handbooks
           </Link>
+          <Link
+            target="_blank"
+            rel="noreferrer"
+            href={siteConfig.links.github}
+            className={cn(buttonVariants({ variant: "outline" }))}
+          >
+            <Icons.gitHub className="mr-2 h-4 w-4" />
+            GitHub
+          </Link>
+        </PageActions>
+      </PageHeader>
 
-          <h1 className="overflow-hidden pb-2 pt-4 text-center font-heading text-4xl font-bold md:text-5xl lg:text-6xl xl:text-7xl">
-            Code Repo: Exploring Web Technologies and Documentation
-          </h1>
-          <p className="max-w-[42rem] text-center leading-normal text-muted-foreground sm:text-xl sm:leading-8">
-            A Comprehensive Repository of Web Technology Examples and
-            Documentation for Developers
-          </p>
-          <div className="inline-flex items-center space-x-4">
+      <section className="grid grid-cols-3 gap-6 py-8 md:py-12 md:pb-8 lg:py-16 lg:pb-20">
+        <Card className="flex flex-col bg-muted/50">
+          <CardHeader>
+            <LibraryBig className="mx-auto mb-8 h-40 w-40 text-primary/70" />
+            <CardTitle>Handbooks</CardTitle>
+            <CardDescription></CardDescription>
+          </CardHeader>
+          <CardFooter className="mt-auto">
             <Link
               href="/handbooks"
-              className={cn(buttonVariants({ size: "lg", variant: "default" }))}
+              className={cn(buttonVariants({ variant: "link" }), "p-0")}
             >
-              Handbooks
+              <span>Find out more</span>
+              <MoveRight className="ml-2" />
             </Link>
+          </CardFooter>
+        </Card>
+        <Card className="flex flex-col bg-muted/50">
+          <CardHeader>
+            <LayoutTemplate className="mx-auto mb-8 h-40 w-40 text-primary/70" />
+            <CardTitle>Templates</CardTitle>
+            <CardDescription>Inspiring Templates to Use</CardDescription>
+          </CardHeader>
+          <CardFooter className="mt-auto">
             <Link
-              href="https://github.com/AntonioObra/coderepo"
-              target="_blank"
-              rel="noreferrer"
-              className={cn(
-                buttonVariants({ variant: "secondary", size: "lg" }),
-              )}
+              href="/templates"
+              className={cn(buttonVariants({ variant: "link" }), "p-0")}
             >
-              <Icons.gitHub className="mr-2 h-5 w-5" />
-              GitHub
+              <span>Find out more</span>
+              <MoveRight className="ml-2" />
             </Link>
-          </div>
-        </div>
+          </CardFooter>
+        </Card>
+        <Card className="flex flex-col bg-muted/50">
+          <CardHeader>
+            <Newspaper className="mx-auto mb-8 h-40 w-40 text-primary/70" />
+            <CardTitle>Guides</CardTitle>
+            <CardDescription>
+              Comprehensive Guides for Web Development Technologies
+            </CardDescription>
+          </CardHeader>
+          <CardFooter className="mt-auto">
+            <Link
+              href="/guides"
+              className={cn(buttonVariants({ variant: "link" }), "p-0")}
+            >
+              <span>Find out more</span>
+              <MoveRight className="ml-2" />
+            </Link>
+          </CardFooter>
+        </Card>
+        <Card className="flex flex-col bg-muted/50">
+          <CardHeader>
+            <Code2Icon className="mx-auto mb-8 h-40 w-40 text-primary/70" />
+            <CardTitle>Resources</CardTitle>
+            <CardDescription>
+              Unlocking a Treasure Trove of Tools, Tutorials, and References for
+              Seamless Web Development Success
+            </CardDescription>
+          </CardHeader>
+          <CardFooter className="mt-auto">
+            <Link
+              href="/resources"
+              className={cn(buttonVariants({ variant: "link" }), "p-0")}
+            >
+              <span>Find out more</span>
+              <MoveRight className="ml-2" />
+            </Link>
+          </CardFooter>
+        </Card>
+        <Card className="bg-muted/50">
+          <CardHeader>
+            <CodeSandboxLogoIcon className="mx-auto mb-8 h-40 w-40 text-primary/70" />
+            <CardTitle>Playground</CardTitle>
+            <CardDescription>Playground to test your code</CardDescription>
+          </CardHeader>
+        </Card>
+        <Card className="bg-muted/50">
+          <CardHeader>
+            <Sparkles className="mx-auto mb-8 h-40 w-40 text-primary/70" />
+            <CardTitle>Save your favourite resources!</CardTitle>
+            <CardDescription>
+              Save all of your favourite handbooks, templates, guides and
+              resources
+            </CardDescription>
+          </CardHeader>
+        </Card>
       </section>
 
-      {/* Technologies */}
-      <section className="container mb-32 grid justify-center gap-4 sm:grid-cols-2 md:grid-cols-3">
-        {mainConfig.technologies.map((technology) => (
-          <TechnologyCard
-            key={technology.title}
-            title={technology.title}
-            description={technology.description}
-            icon={technology.icon}
-          />
-        ))}
-      </section>
-
-      {/* Templates */}
-      <section className="container mb-32">
-        <hgroup className="flex flex-col items-center gap-2">
-          <h1 className="pb-2 pt-4 text-center font-heading text-3xl font-bold md:text-4xl lg:text-6xl">
-            Inspiring Templates to Use
-          </h1>
-          <p className="max-w-[65rem] text-center leading-normal text-muted-foreground sm:text-xl sm:leading-8">
-            Exploring the Possibilities of Cutting-Edge Web Development
-            Technologies: Showcasing Innovative and Inspiring Projects
-          </p>
-        </hgroup>
-
-        <HomeTemplatesClient initialTemplatesData={initialTemplatesData} />
-      </section>
-
-      {/* Open Source */}
-      <section className="container mb-32">
-        <hgroup className="flex flex-col items-center gap-2">
-          <h1 className="pb-2 pt-4 text-center font-heading text-3xl font-bold md:text-4xl lg:text-6xl">
-            Driving Innovation Through Open Source
-          </h1>
-          <p className="max-w-[65rem] text-center leading-normal text-muted-foreground sm:text-xl sm:leading-8">
-            Through active engagement with contributors and users, we aim to
-            create a collaborative environment where ideas are shared, issues
-            are addressed, and the project evolves to meet the ever-changing
-            needs of web development.
-          </p>
-        </hgroup>
+      <section className="py-8 md:py-12 md:pb-8 lg:py-16 lg:pb-20">
+        <p className="mb-12 text-center leading-7 [&:not(:first-child)]:mt-6">
+          Cutting-Edge Technologies Empowering Digital Innovation Empowering.
+          <br />
+          Dynamic and Engaging Web Development with the Latest Web Technologies.
+        </p>
+        <TechnologyCardCarousel />
       </section>
     </main>
   );

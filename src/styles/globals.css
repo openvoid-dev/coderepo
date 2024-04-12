@@ -23,7 +23,7 @@
     --border: 0 0% 89.8%;
     --input: 0 0% 89.8%;
     --ring: 0 72.2% 50.6%;
-    --radius: 1rem;
+    --radius: 0.5rem;
   }
 
   .dark {
@@ -53,35 +53,12 @@
   * {
     @apply border-border;
   }
+  html {
+    @apply scroll-smooth;
+  }
   body {
     @apply bg-background text-foreground;
+    font-synthesis-weight: none;
+    text-rendering: optimizeLegibility;
   }
-}
-
-.animated-link {
-  position: relative;
-  -webkit-box-decoration-break: clone;
-  box-decoration-break: clone;
-  text-decoration: none;
-  font-weight: bold;
-}
-.animated-link:hover:after,
-.animated-link.show:after {
-  transform: translateZ(0) scale(1);
-}
-.animated-link:after {
-  left: 0;
-  right: 0;
-  bottom: -3px;
-  content: "";
-  height: 2px;
-  position: absolute;
-  transform: translateZ(0) scaleX(0);
-  transform-origin: left center;
-  transition: all 0.15s ease-in-out;
-  background-image: linear-gradient(
-    to right,
-    hsl(var(--primary) / 1),
-    hsl(var(--primary) / 1)
-  );
 }
