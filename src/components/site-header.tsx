@@ -9,6 +9,22 @@ import { ModeToggle } from "@/components/mode-toggle";
 import { CommandMenu } from "@/components/command-menu";
 import { MainNav } from "@/components/main-nav";
 import { Icons } from "@/components/icons";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuPortal,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import LogOutNav from "@/components/log-out-nav";
 
 const Navbar = async () => {
   const session = await getServerAuthSession();
@@ -42,9 +58,57 @@ const Navbar = async () => {
               </div>
             </Link>
             <ModeToggle />
-            <Link href="/signup" className={buttonVariants({ size: "sm" })}>
-              Login
-            </Link>
+            {session?.user ? (
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Avatar className="h-8 w-8 cursor-pointer">
+                    <AvatarImage
+                      src={session?.user?.image ?? undefined}
+                      alt={session.user.name ?? undefined}
+                    />
+                    <AvatarFallback>CR</AvatarFallback>
+                  </Avatar>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="mt-2 w-56">
+                  <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuGroup>
+                    <Link href="/profile">
+                      <DropdownMenuItem>Profile</DropdownMenuItem>
+                    </Link>
+                    <Link href="/profile/handbooks">
+                      <DropdownMenuItem>Saved handbooks</DropdownMenuItem>
+                    </Link>
+                    <Link href="/profile/templates">
+                      <DropdownMenuItem>Saved templates</DropdownMenuItem>
+                    </Link>
+                    <Link href="/profile/guides">
+                      <DropdownMenuItem>Saved guides</DropdownMenuItem>
+                    </Link>
+                    <Link href="/profile/resources">
+                      <DropdownMenuItem>Saved resources</DropdownMenuItem>
+                    </Link>
+                  </DropdownMenuGroup>
+                  <DropdownMenuSeparator />
+                  <Link
+                    href={siteConfig.links.github}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <DropdownMenuItem>GitHub</DropdownMenuItem>
+                  </Link>
+                  <Link href="mailto:coderepo@obradovic.dev">
+                    <DropdownMenuItem>Support</DropdownMenuItem>
+                  </Link>
+                  <DropdownMenuSeparator />
+                  <LogOutNav />
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ) : (
+              <Link href="/login" className={buttonVariants({ size: "sm" })}>
+                Login
+              </Link>
+            )}
           </nav>
         </div>
       </nav>
