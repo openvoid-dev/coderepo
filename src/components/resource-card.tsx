@@ -78,7 +78,7 @@ const ResourceCard = ({
                   className="flex flex-1 items-center gap-2"
                   onClick={() => unsaveResource.mutate({ id: id })}
                 >
-                  <Icons.star className="h-4 w-4 fill-white" />
+                  <Icons.star className="h-4 w-4 fill-foreground" />
                   <span>Unsave</span>
                 </Button>
               )}

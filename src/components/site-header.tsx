@@ -76,12 +76,6 @@ const Navbar = async () => {
                     <Link href="/profile">
                       <DropdownMenuItem>Profile</DropdownMenuItem>
                     </Link>
-                    <Link href="/profile/handbooks">
-                      <DropdownMenuItem>Saved handbooks</DropdownMenuItem>
-                    </Link>
-                    <Link href="/profile/templates">
-                      <DropdownMenuItem>Saved templates</DropdownMenuItem>
-                    </Link>
                     <Link href="/profile/guides">
                       <DropdownMenuItem>Saved guides</DropdownMenuItem>
                     </Link>

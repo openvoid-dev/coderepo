@@ -105,7 +105,7 @@ export default function SingleGuidesPageClient({
                 className="items-center gap-2"
                 onClick={() => unsaveGuide.mutate({ id: guide.id })}
               >
-                <Icons.star className="h-4 w-4 fill-white" />
+                <Icons.star className="h-4 w-4 fill-foreground" />
                 Unsave
               </Button>
             )}

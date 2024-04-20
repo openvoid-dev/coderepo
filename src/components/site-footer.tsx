@@ -1,8 +1,11 @@
 import { siteConfig } from "@/config/site";
+import { api } from "@/trpc/server";
 import { LayoutTemplate } from "lucide-react";
 import Link from "next/link";
 
-const Footer = () => {
+const Footer = async () => {
+  const latestGuides = await api.guide.getLatestGuides();
+
   return (
     <footer className="py-6">
       <div className="container flex flex-col items-start justify-between gap-10 lg:flex-row">
@@ -19,120 +22,55 @@ const Footer = () => {
           </p>
         </div>
 
-        <div className="flex flex-col gap-8 lg:flex-row lg:gap-24">
+        <div className="flex max-w-2xl flex-col gap-8 lg:flex-row lg:gap-10">
           <div className="flex flex-col gap-4">
             <p>Handbooks</p>
-            <div className="flex flex-col gap-2">
-              <Link
-                href="/handbooks"
-                className="text-muted-foreground transition-all duration-200 hover:text-foreground hover:underline"
-              >
-                Next.js
-              </Link>
-              <Link
-                href="/handbooks"
-                className="text-muted-foreground transition-all duration-200 hover:text-foreground hover:underline"
-              >
-                PHP
-              </Link>
-              <Link
-                href="/handbooks"
-                className="text-muted-foreground transition-all duration-200 hover:text-foreground hover:underline"
-              >
-                Svelte
-              </Link>
-              <Link
-                href="/handbooks"
-                className="text-muted-foreground transition-all duration-200 hover:text-foreground hover:underline"
-              >
-                Golang
-              </Link>
-            </div>
+            <div className="flex flex-col gap-2"></div>
           </div>
           <div className="flex flex-col gap-4">
             <p>Templates</p>
-            <div className="flex flex-col gap-2">
-              <Link
-                href="/handbooks"
-                className="text-muted-foreground transition-all duration-200 hover:text-foreground hover:underline"
-              >
-                Next.js
-              </Link>
-              <Link
-                href="/handbooks"
-                className="text-muted-foreground transition-all duration-200 hover:text-foreground hover:underline"
-              >
-                PHP
-              </Link>
-              <Link
-                href="/handbooks"
-                className="text-muted-foreground transition-all duration-200 hover:text-foreground hover:underline"
-              >
-                Svelte
-              </Link>
-              <Link
-                href="/handbooks"
-                className="text-muted-foreground transition-all duration-200 hover:text-foreground hover:underline"
-              >
-                Golang
-              </Link>
-            </div>
+            <div className="flex flex-col gap-2"></div>
           </div>
           <div className="flex flex-col gap-4">
             <p>Guides</p>
             <div className="flex flex-col gap-2">
-              <Link
-                href="/handbooks"
-                className="text-muted-foreground transition-all duration-200 hover:text-foreground hover:underline"
-              >
-                Next.js
-              </Link>
-              <Link
-                href="/handbooks"
-                className="text-muted-foreground transition-all duration-200 hover:text-foreground hover:underline"
-              >
-                PHP
-              </Link>
-              <Link
-                href="/handbooks"
-                className="text-muted-foreground transition-all duration-200 hover:text-foreground hover:underline"
-              >
-                Svelte
-              </Link>
-              <Link
-                href="/handbooks"
-                className="text-muted-foreground transition-all duration-200 hover:text-foreground hover:underline"
-              >
-                Golang
-              </Link>
+              {latestGuides.map((guide) => (
+                <Link
+                  key={guide.id}
+                  href={`/guides/${guide.slug}`}
+                  className="text-muted-foreground transition-all duration-200 hover:text-foreground hover:underline"
+                >
+                  {guide.name}
+                </Link>
+              ))}
             </div>
           </div>
           <div className="flex flex-col gap-4">
             <p>Resources</p>
             <div className="flex flex-col gap-2">
               <Link
-                href="/handbooks"
+                href="/resources/useful-blogs"
                 className="text-muted-foreground transition-all duration-200 hover:text-foreground hover:underline"
               >
-                Next.js
+                Useful Blogs
               </Link>
               <Link
-                href="/handbooks"
+                href="/resources/GitHub-Repositories"
                 className="text-muted-foreground transition-all duration-200 hover:text-foreground hover:underline"
               >
-                PHP
+                GitHub Repositories
               </Link>
               <Link
-                href="/handbooks"
+                href="/resources/icons"
                 className="text-muted-foreground transition-all duration-200 hover:text-foreground hover:underline"
               >
-                Svelte
+                Icons
               </Link>
               <Link
-                href="/handbooks"
+                href="/resources/fonts"
                 className="text-muted-foreground transition-all duration-200 hover:text-foreground hover:underline"
               >
-                Golang
+                Fonts
               </Link>
             </div>
           </div>

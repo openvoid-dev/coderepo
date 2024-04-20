@@ -4,6 +4,7 @@ import {
   PageHeader,
   PageHeaderDescription,
   PageHeaderHeading,
+  PageHeroImage,
 } from "@/components/page-header";
 import GuidesPageClient from "@/app/(app)/guides/client";
 import Image from "next/image";
@@ -21,14 +22,7 @@ export default async function GuidesPage() {
 
   return (
     <main className="container relative min-h-screen">
-      <div className="absolute inset-0 -z-10 h-screen">
-        <Image
-          src="/images/hero.webp"
-          alt="hero"
-          fill={true}
-          className="block h-full w-full object-cover [object-position:center] "
-        />
-      </div>
+      <PageHeroImage />
       <PageHeader>
         <PageHeaderHeading>Comprehensive Guides</PageHeaderHeading>
         <PageHeaderDescription>

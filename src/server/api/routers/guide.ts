@@ -112,4 +112,18 @@ export const guideRouter = createTRPCRouter({
         },
       });
     }),
+
+  getLatestGuides: publicProcedure.query(({ ctx }) => {
+    return ctx.db.guide.findMany({
+      take: 4,
+      orderBy: {
+        createdAt: "desc",
+      },
+      select: {
+        id: true,
+        name: true,
+        slug: true,
+      },
+    });
+  }),
 });

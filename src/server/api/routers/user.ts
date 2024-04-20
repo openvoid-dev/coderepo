@@ -172,8 +172,15 @@ export const userRouter = createTRPCRouter({
           select: {
             id: true,
             name: true,
+            imageUrl: true,
+            tag: {
+              select: {
+                id: true,
+                name: true,
+                icon: true,
+              },
+            },
             description: true,
-            updatedAt: true,
             slug: true,
           },
         },

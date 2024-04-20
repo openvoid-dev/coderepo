@@ -75,12 +75,6 @@ export default function GuidesPageClient({
           {data?.map((guide, index) => (
             <GuideCard key={guide.name + index} {...guide} />
           ))}
-          {data?.map((guide, index) => (
-            <GuideCard key={guide.name + index} {...guide} />
-          ))}
-          {data?.map((guide, index) => (
-            <GuideCard key={guide.name + index} {...guide} />
-          ))}
         </div>
       </section>
     </>

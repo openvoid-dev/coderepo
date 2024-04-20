@@ -8,6 +8,7 @@ import {
   PageHeader,
   PageHeaderDescription,
   PageHeaderHeading,
+  PageHeroImage,
 } from "@/components/page-header";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
@@ -42,14 +43,7 @@ import {
 export default async function Home() {
   return (
     <main className="container relative min-h-screen">
-      <div className="absolute inset-0 -z-10 h-screen">
-        <Image
-          src="/images/hero.webp"
-          alt="hero"
-          fill={true}
-          className="block h-full w-full object-cover [object-position:center] "
-        />
-      </div>
+      <PageHeroImage />
 
       <PageHeader className="lg:pt-48">
         {/* <Announcement /> */}
@@ -81,7 +75,10 @@ export default async function Home() {
           <CardHeader>
             <LibraryBig className="mx-auto mb-8 h-40 w-40 text-primary/70" />
             <CardTitle>Handbooks</CardTitle>
-            <CardDescription></CardDescription>
+            <CardDescription>
+              Handbooks are a general collection of templates, guides and
+              resources for specific technologies or parts of development.
+            </CardDescription>
           </CardHeader>
           <CardFooter className="mt-auto">
             <Link
@@ -97,7 +94,10 @@ export default async function Home() {
           <CardHeader>
             <LayoutTemplate className="mx-auto mb-8 h-40 w-40 text-primary/70" />
             <CardTitle>Templates</CardTitle>
-            <CardDescription>Inspiring Templates to Use</CardDescription>
+            <CardDescription>
+              Inspiring templates to use for learning new technologies on real
+              life examples and use cases.
+            </CardDescription>
           </CardHeader>
           <CardFooter className="mt-auto">
             <Link
@@ -114,7 +114,8 @@ export default async function Home() {
             <Newspaper className="mx-auto mb-8 h-40 w-40 text-primary/70" />
             <CardTitle>Guides</CardTitle>
             <CardDescription>
-              Comprehensive Guides for Web Development Technologies
+              Comprehensive guides for web development technologies and
+              frameworks, inlcuding general web development topics.
             </CardDescription>
           </CardHeader>
           <CardFooter className="mt-auto">
@@ -132,8 +133,8 @@ export default async function Home() {
             <Code2Icon className="mx-auto mb-8 h-40 w-40 text-primary/70" />
             <CardTitle>Resources</CardTitle>
             <CardDescription>
-              Unlocking a Treasure Trove of Tools, Tutorials, and References for
-              Seamless Web Development Success
+              A collection of resources to help you learn and grow as a web
+              developer, including tools, libraries and more.
             </CardDescription>
           </CardHeader>
           <CardFooter className="mt-auto">
@@ -150,7 +151,10 @@ export default async function Home() {
           <CardHeader>
             <CodeSandboxLogoIcon className="mx-auto mb-8 h-40 w-40 text-primary/70" />
             <CardTitle>Playground</CardTitle>
-            <CardDescription>Playground to test your code</CardDescription>
+            <CardDescription>
+              Sandbox for testing your code on fly, supporting JS, TS and PHP.
+              Coming soon!
+            </CardDescription>
           </CardHeader>
         </Card>
         <Card className="bg-muted/50">
@@ -159,7 +163,7 @@ export default async function Home() {
             <CardTitle>Save your favourite resources!</CardTitle>
             <CardDescription>
               Save all of your favourite handbooks, templates, guides and
-              resources
+              resources and access them anytime from your profile.
             </CardDescription>
           </CardHeader>
         </Card>
@@ -167,9 +171,9 @@ export default async function Home() {
 
       <section className="py-8 md:py-12 md:pb-8 lg:py-16 lg:pb-20">
         <p className="mb-12 text-center leading-7 [&:not(:first-child)]:mt-6">
-          Cutting-Edge Technologies Empowering Digital Innovation Empowering.
+          Technologies are constantly evolving and changing. Stay up-to-date
           <br />
-          Dynamic and Engaging Web Development with the Latest Web Technologies.
+          with the latest technologies and frameworks.
         </p>
         <TechnologyCardCarousel />
       </section>
@@ -185,44 +189,47 @@ export default async function Home() {
         <div className="mx-auto max-w-2xl">
           <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="item-1">
-              <AccordionTrigger>Is it accessible?</AccordionTrigger>
+              <AccordionTrigger>What is Code Repo? </AccordionTrigger>
               <AccordionContent>
-                Yes. It adheres to the WAI-ARIA design pattern.
+                Code Repo is a comprehensive repository of web technology
+                examples and documentation for developers. It includes
+                handbooks, templates, guides and resources.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-2">
-              <AccordionTrigger>Is it styled?</AccordionTrigger>
+              <AccordionTrigger>Who is Code Repo for? </AccordionTrigger>
               <AccordionContent>
-                Yes. It comes with default styles that matches the other
-                components&apos; aesthetic.
+                Code Repo is for developers who want to learn new technologies
+                and frameworks, and improve their skills by exploring real life
+                examples and use cases.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-3">
-              <AccordionTrigger>Is it animated?</AccordionTrigger>
+              <AccordionTrigger>
+                How can I submit new resources or ideas for Code Repo?
+              </AccordionTrigger>
               <AccordionContent>
-                Yes. It&apos;s animated by default, but you can disable it if
-                you prefer.
+                You can submit new resources or ideas for Code Repo by opening
+                an issue on GitHub or by creating a pull request with your
+                changes.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-4">
-              <AccordionTrigger>Is it animated?</AccordionTrigger>
+              <AccordionTrigger>
+                How often are handbooks, templates, guides and resources added?
+              </AccordionTrigger>
               <AccordionContent>
-                Yes. It&apos;s animated by default, but you can disable it if
-                you prefer.
+                New handbooks, templates, guides and resources are added
+                regularly. Check back often for updates!
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-5">
-              <AccordionTrigger>Is it animated?</AccordionTrigger>
+              <AccordionTrigger>
+                When will the Playground be available?
+              </AccordionTrigger>
               <AccordionContent>
-                Yes. It&apos;s animated by default, but you can disable it if
-                you prefer.
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="item-6">
-              <AccordionTrigger>Is it animated?</AccordionTrigger>
-              <AccordionContent>
-                Yes. It&apos;s animated by default, but you can disable it if
-                you prefer.
+                The Playground is currently under development and will be
+                available soon. Stay tuned for updates!
               </AccordionContent>
             </AccordionItem>
           </Accordion>

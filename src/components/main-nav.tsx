@@ -23,9 +23,9 @@ export function MainNav() {
       </Link>
       <nav className="flex items-center gap-2 text-sm">
         <Link
-          href="/docs"
+          href="/handbooks"
           className={buttonVariants({
-            variant: pathname?.startsWith("/docs") ? "secondary" : "ghost",
+            variant: pathname?.startsWith("/handbooks") ? "secondary" : "ghost",
             size: "sm",
           })}
         >
