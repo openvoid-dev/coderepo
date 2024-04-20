@@ -19,8 +19,8 @@ export const guideRouter = createTRPCRouter({
         content: z.string(),
       }),
     )
-    .mutation(async ({ ctx, input }) => {
-      const guide = await ctx.db.guide.create({
+    .mutation(({ ctx, input }) => {
+      return ctx.db.guide.create({
         data: {
           name: input.name,
           imageUrl: input.imageUrl,
@@ -30,12 +30,10 @@ export const guideRouter = createTRPCRouter({
           slug: slugify(input.name.toLocaleLowerCase()),
         },
       });
-
-      return guide;
     }),
 
-  getGuideTags: publicProcedure.query(async ({ ctx }) => {
-    const tags = await ctx.db.guideTag.findMany({
+  getGuideTags: publicProcedure.query(({ ctx }) => {
+    return ctx.db.guideTag.findMany({
       select: {
         id: true,
         name: true,
@@ -43,8 +41,6 @@ export const guideRouter = createTRPCRouter({
         slug: true,
       },
     });
-
-    return tags;
   }),
 
   getGuides: publicProcedure.query(({ ctx }) => {
@@ -68,8 +64,8 @@ export const guideRouter = createTRPCRouter({
 
   getGuideBySlug: publicProcedure
     .input(z.object({ slug: z.string() }))
-    .query(async ({ ctx, input }) => {
-      const guide = await ctx.db.guide.findUnique({
+    .query(({ ctx, input }) => {
+      return ctx.db.guide.findUnique({
         where: {
           slug: input.slug,
         },
@@ -95,7 +91,25 @@ export const guideRouter = createTRPCRouter({
             : false,
         },
       });
+    }),
 
-      return guide;
+  getRelatedGuides: publicProcedure
+    .input(z.object({ tagId: z.number(), guideId: z.number() }))
+    .query(({ ctx, input }) => {
+      return ctx.db.guide.findMany({
+        where: {
+          tagId: input.tagId,
+          NOT: {
+            id: input.guideId,
+          },
+        },
+        select: {
+          id: true,
+          name: true,
+          imageUrl: true,
+          description: true,
+          slug: true,
+        },
+      });
     }),
 });

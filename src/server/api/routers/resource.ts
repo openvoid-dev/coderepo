@@ -9,8 +9,8 @@ import {
 import slugify from "slugify";
 
 export const resourceRouter = createTRPCRouter({
-  getResourceCategories: publicProcedure.query(async ({ ctx }) => {
-    const resourceCategories = await ctx.db.resourceCategory.findMany({
+  getResourceCategories: publicProcedure.query(({ ctx }) => {
+    return ctx.db.resourceCategory.findMany({
       orderBy: { name: "asc" },
       select: {
         id: true,
@@ -20,12 +20,6 @@ export const resourceRouter = createTRPCRouter({
         slug: true,
       },
     });
-
-    if (!resourceCategories) {
-      throw new Error("No resource categories found");
-    }
-
-    return resourceCategories;
   }),
 
   getResourcesForCategory: publicProcedure
@@ -75,8 +69,8 @@ export const resourceRouter = createTRPCRouter({
       return { category, resources };
     }),
 
-  getResources: publicProcedure.query(async ({ ctx }) => {
-    const resources = await ctx.db.resource.findMany({
+  getResources: publicProcedure.query(({ ctx }) => {
+    return ctx.db.resource.findMany({
       select: {
         id: true,
         name: true,
@@ -91,18 +85,12 @@ export const resourceRouter = createTRPCRouter({
         },
       },
     });
-
-    if (!resources) {
-      throw new Error("No resources found");
-    }
-
-    return resources;
   }),
 
   getResourceById: publicProcedure
     .input(z.object({ id: z.number() }))
-    .query(async ({ ctx, input }) => {
-      const resource = await ctx.db.resource.findUnique({
+    .query(({ ctx, input }) => {
+      return ctx.db.resource.findUnique({
         where: {
           id: input.id,
         },
@@ -118,18 +106,12 @@ export const resourceRouter = createTRPCRouter({
           },
         },
       });
-
-      if (!resource) {
-        throw new Error("No resource found");
-      }
-
-      return resource;
     }),
 
   getResourceCategoryById: publicProcedure
     .input(z.object({ id: z.number() }))
-    .query(async ({ ctx, input }) => {
-      const resourceCategory = await ctx.db.resourceCategory.findUnique({
+    .query(({ ctx, input }) => {
+      return ctx.db.resourceCategory.findUnique({
         where: {
           id: input.id,
         },
@@ -141,12 +123,6 @@ export const resourceRouter = createTRPCRouter({
           slug: true,
         },
       });
-
-      if (!resourceCategory) {
-        throw new Error("No resource category found");
-      }
-
-      return resourceCategory;
     }),
 
   createResource: protectedProcedure
@@ -158,8 +134,8 @@ export const resourceRouter = createTRPCRouter({
         categoryId: z.number(),
       }),
     )
-    .mutation(async ({ ctx, input }) => {
-      const resource = await ctx.db.resource.create({
+    .mutation(({ ctx, input }) => {
+      return ctx.db.resource.create({
         data: {
           name: input.name,
           description: input.description,
@@ -167,12 +143,6 @@ export const resourceRouter = createTRPCRouter({
           categoryId: input.categoryId,
         },
       });
-
-      if (!resource) {
-        throw new Error("Resource not created");
-      }
-
-      return resource;
     }),
 
   updateResource: protectedProcedure
@@ -185,8 +155,8 @@ export const resourceRouter = createTRPCRouter({
         id: z.number(),
       }),
     )
-    .mutation(async ({ ctx, input }) => {
-      const resource = await ctx.db.resource.update({
+    .mutation(({ ctx, input }) => {
+      return ctx.db.resource.update({
         where: {
           id: input.id,
         },
@@ -197,12 +167,6 @@ export const resourceRouter = createTRPCRouter({
           categoryId: input.categoryId,
         },
       });
-
-      if (!resource) {
-        throw new Error("Resource not updated");
-      }
-
-      return resource;
     }),
 
   createResourceCategory: protectedProcedure
@@ -213,11 +177,11 @@ export const resourceRouter = createTRPCRouter({
         icon: z.string(),
       }),
     )
-    .mutation(async ({ ctx, input }) => {
+    .mutation(({ ctx, input }) => {
       // Create a slug
       const slug = slugify(input.name);
 
-      const resourceCategory = await ctx.db.resourceCategory.create({
+      return ctx.db.resourceCategory.create({
         data: {
           name: input.name,
           description: input.description,
@@ -225,12 +189,6 @@ export const resourceRouter = createTRPCRouter({
           slug: slug,
         },
       });
-
-      if (!resourceCategory) {
-        throw new Error("Resource category not created");
-      }
-
-      return resourceCategory;
     }),
 
   updateResourceCategory: protectedProcedure
@@ -243,8 +201,8 @@ export const resourceRouter = createTRPCRouter({
         slug: z.string(),
       }),
     )
-    .mutation(async ({ ctx, input }) => {
-      const resourceCategory = await ctx.db.resourceCategory.update({
+    .mutation(({ ctx, input }) => {
+      return ctx.db.resourceCategory.update({
         where: {
           id: input.id,
         },
@@ -255,43 +213,25 @@ export const resourceRouter = createTRPCRouter({
           slug: input.slug,
         },
       });
-
-      if (!resourceCategory) {
-        throw new Error("Resource category not updated");
-      }
-
-      return resourceCategory;
     }),
 
   deleteResource: protectedProcedure
     .input(z.object({ id: z.number() }))
-    .mutation(async ({ ctx, input }) => {
-      const resource = await ctx.db.resource.delete({
+    .mutation(({ ctx, input }) => {
+      return ctx.db.resource.delete({
         where: {
           id: input.id,
         },
       });
-
-      if (!resource) {
-        throw new Error("Resource not deleted");
-      }
-
-      return resource;
     }),
 
   deleteResourceCategory: protectedProcedure
     .input(z.object({ id: z.number() }))
-    .mutation(async ({ ctx, input }) => {
-      const resourceCategory = await ctx.db.resourceCategory.delete({
+    .mutation(({ ctx, input }) => {
+      return ctx.db.resourceCategory.delete({
         where: {
           id: input.id,
         },
       });
-
-      if (!resourceCategory) {
-        throw new Error("Resource category not deleted");
-      }
-
-      return resourceCategory;
     }),
 });

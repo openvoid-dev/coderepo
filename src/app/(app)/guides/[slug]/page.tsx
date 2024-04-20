@@ -1,13 +1,17 @@
 import { type Metadata } from "next";
 import { notFound } from "next/navigation";
-import { unstable_noStore as noStore } from "next/cache";
-
 import SingleGuidesPageClient from "@/app/(app)/guides/[slug]/client";
 import { api } from "@/trpc/server";
 import { db } from "@/server/db";
-import { MDXRemote } from "next-mdx-remote/rsc";
 import { CustomMDX } from "@/components/mdx-remote";
-import { PrismaClient } from "@prisma/client";
+import GuideCard from "@/components/guide-card";
+import { Badge } from "@/components/ui/badge";
+import {
+  PageHeader,
+  PageHeaderDescription,
+  PageHeaderHeading,
+} from "@/components/page-header";
+import Image from "next/image";
 
 export async function generateMetadata({
   params,
@@ -59,7 +63,6 @@ export default async function SingleGuidesPage({
 }: {
   params: { slug: string };
 }) {
-  noStore();
   const guide = await api.guide.getGuideBySlug({
     slug: params.slug,
   });
@@ -68,32 +71,69 @@ export default async function SingleGuidesPage({
     notFound();
   }
 
+  const relatedGuides = await api.guide.getRelatedGuides({
+    tagId: guide.tag.id,
+    guideId: guide.id,
+  });
+
   return (
     <main className="container relative min-h-screen">
-      <SingleGuidesPageClient initialData={guide} slug={params.slug} />
+      <div className="mx-auto max-w-4xl py-8 md:py-12 md:pb-8 lg:py-16 lg:pb-20">
+        <SingleGuidesPageClient initialData={guide} slug={params.slug} />
 
-      <article className="container mt-4 max-w-3xl">
+        <Badge>{guide.tag.name}</Badge>
+
+        <PageHeader className="items-start justify-start lg:py-6">
+          <PageHeaderHeading className="text-left">
+            {guide.name}
+          </PageHeaderHeading>
+          <PageHeaderDescription className="text-left">
+            {guide.description}
+          </PageHeaderDescription>
+        </PageHeader>
+
+        <div>
+          <Image
+            src={guide.imageUrl}
+            alt={guide.name}
+            width="1000"
+            height="1000"
+            className="rounded-lg"
+          />
+        </div>
+      </div>
+
+      <article className="mx-auto mt-4 max-w-3xl lg:pb-20">
         <CustomMDX source={guide.content} />
       </article>
+
+      <section className="mx-auto max-w-5xl py-8 md:py-12 md:pb-8 lg:py-16 lg:pb-24">
+        <h2 className="text-center text-3xl font-bold">Related Guides</h2>
+        <div className="mt-8 grid w-full grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {relatedGuides.map((relatedGuide) => (
+            <GuideCard
+              key={relatedGuide.slug}
+              imageUrl={relatedGuide.imageUrl}
+              name={relatedGuide.name}
+              slug={relatedGuide.slug}
+              description={relatedGuide.description}
+              tag={guide.tag}
+            />
+          ))}
+        </div>
+      </section>
     </main>
   );
 }
 
-// export async function generateStaticParams() {
-//   const prisma = new PrismaClient();
-//   const guides = await prisma.guide.findMany({
-//     select: {
-//       slug: true,
-//     },
-//   });
-//   // const guides = await db.guide.findMany();
-//   // const guides = await db.guide.findMany({
-//   //   select: {
-//   //     slug: true,
-//   //   },
-//   // });
+export async function generateStaticParams() {
+  const guides = await db.guide.findMany({
+    select: {
+      slug: true,
+    },
+  });
 
-//   return guides.map((guide) => ({
-//     slug: guide.slug,
-//   }));
-// }
+  return guides.map((guide) => ({
+    slug: guide.slug,
+  }));
+}

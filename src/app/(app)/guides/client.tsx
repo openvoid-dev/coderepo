@@ -73,37 +73,13 @@ export default function GuidesPageClient({
 
         <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {data?.map((guide, index) => (
-            <GuideCard
-              key={guide.name + index}
-              {...guide}
-              // isSaved={
-              //     guide.myResources && guide.myResources.length > 0
-              //         ? true
-              //         : false
-              // }
-            />
+            <GuideCard key={guide.name + index} {...guide} />
           ))}
           {data?.map((guide, index) => (
-            <GuideCard
-              key={guide.name + index}
-              {...guide}
-              // isSaved={
-              //     guide.myResources && guide.myResources.length > 0
-              //         ? true
-              //         : false
-              // }
-            />
+            <GuideCard key={guide.name + index} {...guide} />
           ))}
           {data?.map((guide, index) => (
-            <GuideCard
-              key={guide.name + index}
-              {...guide}
-              // isSaved={
-              //     guide.myResources && guide.myResources.length > 0
-              //         ? true
-              //         : false
-              // }
-            />
+            <GuideCard key={guide.name + index} {...guide} />
           ))}
         </div>
       </section>

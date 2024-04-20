@@ -1,11 +1,9 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
 
 interface GuideCardProps {
   slug: string;
-  id: number;
+  // id: number;
   name: string;
   description: string;
   imageUrl: string;
@@ -29,9 +27,9 @@ const GuideCard = ({
         <Image
           src={imageUrl}
           alt={name}
-          width={310}
-          height={176}
-          className="rounded-lg border-2 border-primary/50"
+          width={1200}
+          height={1200}
+          className="rounded-lg border-2"
         />
         <div className="mt-4">
           <p className="text-primary">{tag.name}</p>
