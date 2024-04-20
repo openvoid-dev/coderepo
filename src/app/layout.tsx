@@ -1,37 +1,24 @@
-import "~/styles/globals.css";
+import "@/styles/globals.css";
 
-import { Nunito, Poppins } from "next/font/google";
+import { cn } from "@/lib/utils";
+import { fontSans } from "@/lib/fonts";
+import { TRPCReactProvider } from "@/trpc/react";
+import { ThemeProvider } from "@/components/theme-provider";
+import { type Metadata, type Viewport } from "next";
+import { siteConfig } from "@/config/site";
+import { Toaster } from "@/components/ui/sonner";
 
-import { TRPCReactProvider } from "~/trpc/react";
-import { ThemeProvider } from "~/components/ThemeProvider";
-import { cn } from "~/lib/utils";
-import Navbar from "~/components/Navbar";
-import { Toaster } from "~/components/ui/sonner";
-import Footer from "~/components/Footer";
-import { Analytics } from "~/components/Analytics";
-import { siteConfig } from "~/config/site";
-
-// Fonts
-const poppins = Poppins({
-  subsets: ["latin", "latin-ext"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-sans",
-});
-
-const nunito = Nunito({
-  subsets: ["latin", "latin-ext"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-heading",
-});
-
-export const metadata = {
-  metadataBase: new URL("https://coderepo.openvoid.dev"),
+export const metadata: Metadata = {
   title: {
     default: siteConfig.name,
-    template: `%s | ${siteConfig.name}`,
+    template: `%s - ${siteConfig.name}`,
   },
+  metadataBase: new URL(siteConfig.url),
   description: siteConfig.description,
   keywords: [
+    "Next.js",
+    "React",
+    "Tailwind CSS",
     "web",
     "code",
     "repo",
@@ -65,7 +52,6 @@ export const metadata = {
     },
   ],
   creator: "Open Void",
-  publisher: "Open Void",
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -73,20 +59,35 @@ export const metadata = {
     title: siteConfig.name,
     description: siteConfig.description,
     siteName: siteConfig.name,
+    images: [
+      {
+        url: siteConfig.ogImage,
+        width: 1200,
+        height: 630,
+        alt: siteConfig.name,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: siteConfig.name,
     description: siteConfig.description,
     images: [siteConfig.ogImage],
-    creator: "@obradovicdotdev",
+    creator: "@openvoid-dev",
   },
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
-    apple: "/favicon.ico",
+    icon: "/favicon.svg",
+    shortcut: "/favicon-16x16.png",
+    apple: "/apple-touch-icon.png",
   },
   manifest: `${siteConfig.url}/site.webmanifest`,
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "white" },
+    { media: "(prefers-color-scheme: dark)", color: "black" },
+  ],
 };
 
 export default function RootLayout({
@@ -95,22 +96,30 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head />
       <body
         className={cn(
-          poppins.className,
-          nunito.variable,
-          "grainy dark min-h-screen bg-background antialiased",
+          "min-h-screen bg-background font-sans antialiased",
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
+          fontSans.variable,
         )}
       >
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
           <TRPCReactProvider>
-            <Navbar />
-            {children}
-            <Footer />
+            <div vaul-drawer-wrapper="">
+              <div className="relative flex min-h-screen flex-col">
+                {children}
+              </div>
+            </div>
           </TRPCReactProvider>
           <Toaster />
-          <Analytics />
+          {/* <Analytics /> */}
         </ThemeProvider>
       </body>
     </html>

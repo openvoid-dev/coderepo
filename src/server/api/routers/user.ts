@@ -4,7 +4,7 @@ import {
   createTRPCRouter,
   protectedProcedure,
   publicProcedure,
-} from "~/server/api/trpc";
+} from "@/server/api/trpc";
 
 export const userRouter = createTRPCRouter({
   saveResource: protectedProcedure
@@ -172,8 +172,15 @@ export const userRouter = createTRPCRouter({
           select: {
             id: true,
             name: true,
+            imageUrl: true,
+            tag: {
+              select: {
+                id: true,
+                name: true,
+                icon: true,
+              },
+            },
             description: true,
-            updatedAt: true,
             slug: true,
           },
         },
