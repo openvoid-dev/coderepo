@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "Code Repo",
   url: "https://coderepo.openvoid.dev",
-  ogImage: "https://coderepo.openvoid.dev/og.png",
+  ogImage: "https://coderepo.openvoid.dev/og.jpg",
   description:
     "A Comprehensive Repository of Web Technology Examples and Documentation for Developers.",
   links: {
