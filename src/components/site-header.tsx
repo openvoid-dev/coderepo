@@ -74,13 +74,19 @@ const Navbar = async () => {
                   <DropdownMenuSeparator />
                   <DropdownMenuGroup>
                     <Link href="/profile">
-                      <DropdownMenuItem>Profile</DropdownMenuItem>
+                      <DropdownMenuItem className="cursor-pointer">
+                        Profile
+                      </DropdownMenuItem>
                     </Link>
                     <Link href="/profile/guides">
-                      <DropdownMenuItem>Saved guides</DropdownMenuItem>
+                      <DropdownMenuItem className="cursor-pointer">
+                        Saved guides
+                      </DropdownMenuItem>
                     </Link>
                     <Link href="/profile/resources">
-                      <DropdownMenuItem>Saved resources</DropdownMenuItem>
+                      <DropdownMenuItem className="cursor-pointer">
+                        Saved resources
+                      </DropdownMenuItem>
                     </Link>
                   </DropdownMenuGroup>
                   <DropdownMenuSeparator />
@@ -89,10 +95,14 @@ const Navbar = async () => {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <DropdownMenuItem>GitHub</DropdownMenuItem>
+                    <DropdownMenuItem className="cursor-pointer">
+                      GitHub
+                    </DropdownMenuItem>
                   </Link>
                   <Link href="mailto:coderepo@obradovic.dev">
-                    <DropdownMenuItem>Support</DropdownMenuItem>
+                    <DropdownMenuItem className="cursor-pointer">
+                      Support
+                    </DropdownMenuItem>
                   </Link>
                   <DropdownMenuSeparator />
                   <LogOutNav />

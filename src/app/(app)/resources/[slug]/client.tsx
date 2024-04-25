@@ -7,6 +7,7 @@ import {
   PageHeader,
   PageHeaderDescription,
   PageHeaderHeading,
+  PageHeroImage,
 } from "@/components/page-header";
 import ResourceCard from "@/components/resource-card";
 import { buttonVariants } from "@/components/ui/button";
@@ -44,6 +45,7 @@ export default function ResourcesByCategoryPageClient({
 
   return (
     <>
+      <PageHeroImage />
       <PageHeader>
         <PageHeaderHeading>{category.name}</PageHeaderHeading>
         <PageHeaderDescription>{category.description}</PageHeaderDescription>
