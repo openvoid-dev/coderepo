@@ -65,14 +65,6 @@ export default async function ResourcesByCategoryPage({
 
   return (
     <main className="container relative min-h-screen pb-8 lg:pb-20">
-      <div className="absolute inset-0 -z-10 h-screen">
-        <Image
-          src="/images/hero.webp"
-          alt="hero"
-          fill={true}
-          className="block h-full w-full object-cover [object-position:center] "
-        />
-      </div>
       <ResourcesByCategoryPageClient
         slug={params.slug}
         category={category}
