@@ -69,7 +69,7 @@ export default async function ProfileLayout({ children }: AppLayoutProps) {
               <>
                 <hr />
                 <Link
-                  href="/profile/admin/templates"
+                  href="/admin/templates"
                   className={cn(
                     buttonVariants({
                       variant: "secondary",
@@ -81,7 +81,7 @@ export default async function ProfileLayout({ children }: AppLayoutProps) {
                   <Icons.template className="mr-3 h-5 w-5" /> Edit Templates
                 </Link>
                 <Link
-                  href="/profile/admin/guides"
+                  href="/admin/guides"
                   className={cn(
                     buttonVariants({
                       variant: "secondary",

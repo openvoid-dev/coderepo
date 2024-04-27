@@ -89,10 +89,49 @@ function PageHeroImage({
   );
 }
 
+function AdminPageHeader({
+  className,
+  children,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) {
+  return (
+    <section className={cn("flex justify-between", className)} {...props}>
+      {children}
+    </section>
+  );
+}
+
+function AdminPageHeaderHeading({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLHeadingElement>) {
+  return (
+    <h1
+      className={cn("font-heading text-left text-2xl font-bold", className)}
+      {...props}
+    />
+  );
+}
+
+function AdminPageActions({
+  className,
+  children,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) {
+  return (
+    <div className={cn("flex  items-center space-x-4", className)} {...props}>
+      {children}
+    </div>
+  );
+}
+
 export {
   PageHeader,
   PageHeaderHeading,
   PageHeaderDescription,
   PageActions,
   PageHeroImage,
+  AdminPageHeader,
+  AdminPageHeaderHeading,
+  AdminPageActions,
 };
