@@ -7,6 +7,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { type Metadata, type Viewport } from "next";
 import { siteConfig } from "@/config/site";
 import { Toaster } from "@/components/ui/sonner";
+import { Analytics } from "@/components/analytics";
 
 export const metadata: Metadata = {
   title: {
@@ -119,7 +120,7 @@ export default function RootLayout({
             </div>
           </TRPCReactProvider>
           <Toaster />
-          {/* <Analytics /> */}
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>
